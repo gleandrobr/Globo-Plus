@@ -1,5 +1,7 @@
 // React imports
-import React, { } from 'react'
+import React, { useEffect } from 'react'
+
+import { connect } from 'react-redux'
 
 import {
   SafeAreaView,
@@ -10,16 +12,35 @@ import {
 // containers
 import { Container } from './styles'
 
-const HomeScreen = ({ navigation }) => {
+// redux
+import { fetchPost } from '../../store/post/action'
+
+const HomeScreen = (props) => {
+  useEffect(() => {
+    props.fetchPost({ 'teste': 'Olá pessoal vamos testar isso aqui' })
+  }, [])
+
   return (
     <SafeAreaView>
       <Container>
         <Text>Olá mundo</Text>
+        <Text>{props.user ? props.user.more : 'Carregando'}</Text>
         <Button title='Nova tela' onPress={() => {
-          navigation.navigate('Detail')
+          props.navigation.navigate('Detail')
         }} />
       </Container>
     </SafeAreaView>
   )
 }
-export default HomeScreen
+
+const mapStateToProps = ({ user }) => {
+  return {
+    user
+  }
+}
+
+export default connect(
+  mapStateToProps, {
+    fetchPost
+  }
+)(HomeScreen)
