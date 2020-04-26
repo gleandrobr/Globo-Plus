@@ -23,7 +23,7 @@ export const requests = {
       })
   },
 
-  delete(url, params, type) {
+  delete(url, type) {
     return axios.delete(url)
       .then((response) => {
         return { type: type, payload: response }
