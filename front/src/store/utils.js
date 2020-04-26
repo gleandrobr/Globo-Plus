@@ -23,10 +23,10 @@ export const requests = {
       })
   },
 
-  delete(url, type) {
+  delete(url, params, type) {
     return axios.delete(url)
-      .then((response) => {
-        return { type: type, payload: response }
+      .then(() => {
+        return { type: type, payload: params }
       })
       .catch((error) => {
         throw error
