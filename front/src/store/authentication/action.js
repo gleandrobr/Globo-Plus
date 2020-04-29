@@ -2,5 +2,7 @@
 import { LOGIN_USER } from './types'
 import { requests } from '../utils'
 
-export const loginUser = () =>
-  requests.post('login', LOGIN_USER)
+export const loginUser = (data) => {
+  console.log('ENTREI AQUI')
+  return requests.post('login', data, LOGIN_USER)
+}

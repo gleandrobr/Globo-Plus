@@ -20,4 +20,5 @@ export const InputField = styled.TextInput`
   margin: 20px 0;
   border-radius: 10px;
   text-align: center;
+  color: #fff;
 `
