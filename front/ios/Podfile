@@ -79,6 +79,8 @@ target 'GloboPlus' do
 
   pod 'RNSecureStorage', :path => '../node_modules/react-native-secure-storage'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'GloboPlusTests' do
     inherit! :complete
     # Pods for testing
