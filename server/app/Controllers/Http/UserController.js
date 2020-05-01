@@ -18,6 +18,12 @@ class UserController {
     return result
   }
 
+  async list({ request }) {
+    let users = User.query().fetch()
+
+    return users
+  }
+
 }
 
 module.exports = UserController
