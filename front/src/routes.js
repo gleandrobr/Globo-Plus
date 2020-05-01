@@ -4,24 +4,27 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 // components
-import HomeScreen from './containers/Home'
-import DetailScreen from './containers/Detail'
+import SplashScreen from './containers/Splash'
+import LoginScreen from './containers/Authentication/login'
+import RegisterScreen from './containers/Authentication/register'
 
 const Stack = createStackNavigator()
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator
+        initialRouteName='Splash'
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{ title: 'Tela inicial do Globo Plus' }} />
-
+          name='Splash'
+          component={SplashScreen} />
         <Stack.Screen
-          name='Detail'
-          component={DetailScreen}
-          options={{ title: 'Tela detail do Globo Plus' }} />
+          name='Login'
+          component={LoginScreen} />
+        <Stack.Screen
+          name='Register'
+          component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

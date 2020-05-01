@@ -1,35 +1,65 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:3333/'
+axios.defaults.baseURL = 'http://172.31.255.106:3333/'
 
 export const requests = {
   get(url, type) {
-    return axios.get(url)
-      .then((response) => {
-        return { type: type, payload: response }
+    return dispatch => axios
+      .get(url)
+      .then(response => {
+        dispatch({
+          type: type,
+          payload: response.data
+        })
+        return response
       })
-      .catch((error) => {
+      .catch(error => {
         throw error
       })
   },
 
   post(url, data, type) {
-    return axios.post(url, data)
-      .then((response) => {
-        return { type: type, payload: response }
+    return dispatch => axios
+      .post(`${url}`, data)
+      .then(response => {
+        dispatch({
+          type: type,
+          payload: response.data
+        })
+        return response
       })
-      .catch((error) => {
+      .catch(error => {
         throw error
       })
   },
 
-  delete(url, params, type) {
-    return axios.delete(url)
-      .then(() => {
-        return { type: type, payload: params }
+  put(url, data, type) {
+    return dispatch => axios
+      .put(url, data)
+      .then(response => {
+        dispatch({
+          type: type,
+          payload: response.data
+        })
+        return response
       })
-      .catch((error) => {
+      .catch(error => {
         throw error
       })
-  }
+  },
+
+  patch(url, data, type) {
+    return dispatch => axios
+      .patch(url, data)
+      .then(response => {
+        dispatch({
+          type: type,
+          payload: response.data
+        })
+        return response
+      })
+      .catch(error => {
+        throw error
+      })
+  },
 }
