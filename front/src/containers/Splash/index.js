@@ -1,22 +1,24 @@
 // react imports
 import React, { useEffect } from 'react'
+import { Image } from 'react-native'
 
 // local imports
 import {
-  Container,
-  Logo
+  Container
 } from './style'
+
+import logo from '../../assets/logo.png'
 
 const SplashScreen = (props) => {
   useEffect(() => {
-      setTimeout(() => {
-      props.navigation.navigate('Login')
+    setTimeout(() => {
+      props.navigation.navigate('Home')
     }, 4000)
   }, [])
 
   return (
     <Container>
-      <Logo>Globo Plus</Logo>
+      <Image source={logo} />
     </Container>
   )
 }
