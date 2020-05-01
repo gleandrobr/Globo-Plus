@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// axios.defaults.baseURL = 'http://localhost:3333/'
+axios.defaults.baseURL = 'http://172.31.255.106:3333/'
 
 export const requests = {
   get(url, type) {
@@ -19,11 +19,8 @@ export const requests = {
   },
 
   post(url, data, type) {
-    console.log(`url=${url}`)
-    console.log('data=', data)
-    console.log('type=', type)
     return dispatch => axios
-      .post(`http://localhost:3333/${url}`, data)
+      .post(`${url}`, data)
       .then(response => {
         dispatch({
           type: type,

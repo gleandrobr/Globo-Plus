@@ -22,3 +22,9 @@ export const InputField = styled.TextInput`
   text-align: center;
   color: #fff;
 `
+
+export const HyperLink = styled.Text`
+  color: #fff;
+  margin: 5% auto;
+  text-decoration: underline;
+`

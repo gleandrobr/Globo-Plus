@@ -9,7 +9,7 @@ import {
 
 const SplashScreen = (props) => {
   useEffect(() => {
-    setInterval(() => {
+      setTimeout(() => {
       props.navigation.navigate('Login')
     }, 4000)
   }, [])
