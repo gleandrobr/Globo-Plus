@@ -31,7 +31,6 @@ const LoginScreen = (props) => {
 
     if(Object.keys(authentication).length > 0) {
       if(authentication.hasOwnProperty('token')) {
-        console.log(authentication)
         async function saveLogin() {
           await SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, authentication.token, SecureStorageConfig)
 
