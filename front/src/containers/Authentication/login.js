@@ -1,12 +1,11 @@
 // react imports
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import {
-  Button,
-  View,
-  Text
-} from 'react-native'
+//Icons
+import IconUser from 'react-native-vector-icons/AntDesign'
+import IconKey from 'react-native-vector-icons/Fontisto'
+
 
 // third imports
 import { withFormik } from 'formik'
@@ -21,16 +20,24 @@ import {
   Container,
   Logo,
   InputField,
-  HyperLink
-} from './style'
+  HyperLink,
+  ContainerLogo,
+  ContainerView,
+  ContainerItem,
+  Icon,
+  Button,
+  Text
+} from './styleLogin'
+
+import logo from '../../assets/logo.png'
 
 const LoginScreen = (props) => {
 
   useEffect(() => {
     const { authentication } = props
 
-    if(Object.keys(authentication).length > 0) {
-      if(authentication.hasOwnProperty('token')) {
+    if (Object.keys(authentication).length > 0) {
+      if (authentication.hasOwnProperty('token')) {
         async function saveLogin() {
           await SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, authentication.token, SecureStorageConfig)
 
@@ -43,22 +50,46 @@ const LoginScreen = (props) => {
 
   return (
     <Container>
-      <Logo>Globo Plus</Logo>
+      <ContainerLogo>
+        <Logo source={logo} />
+      </ContainerLogo>
+      <ContainerView>
 
-      <View>
-        <Text>Email</Text>
-        <InputField
-          value={props.values.email}
-          onChangeText={text => props.setFieldValue('email', text)} />
+        <ContainerItem>
+          <InputField
+            placeholder='Digite seu login'
+            value={props.values.email}
+            onChangeText={text => props.setFieldValue('email', text)}
+          />
+          <Icon>
+            <IconUser
+              name='user'
+              size={35}
+              color='#fff'
+            />
+          </Icon>
+        </ContainerItem>
+        <ContainerItem>
+          <InputField
+            placeholder='Digite sua senha'
+            value={props.values.password}
+            secureTextEntry
+            onChangeText={text => props.setFieldValue('password', text)}
+          />
+          <Icon>
+            <IconKey
+              name='key'
+              size={35}
+              color='#fff'
+            />
+          </Icon>
+        </ContainerItem>
 
-        <Text>Senha</Text>
-        <InputField
-          value={props.values.password}
-          onChangeText={text => props.setFieldValue('password', text)} />
-
-        <Button
-          onPress={props.handleSubmit}
-          title='Login' />
+        <Button onPress={props.handleSubmit}>
+          <Text
+            font={'20px'}
+          >Conectar</Text>
+        </Button>
 
         <HyperLink
           onPress={() => {
@@ -66,7 +97,7 @@ const LoginScreen = (props) => {
           }}>
           Criar uma nova conta
         </HyperLink>
-      </View>
+      </ContainerView>
     </Container>
   )
 }
@@ -92,6 +123,6 @@ const mapStateToProps = ({ authentication }) => {
 
 export default connect(
   mapStateToProps, {
-    loginUser
-  }
+  loginUser
+}
 )(formikEnhancer)
