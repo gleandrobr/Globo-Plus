@@ -6,10 +6,3 @@ export const Container = styled.SafeAreaView`
   justify-content: center;
   align-items: center;
 `
-
-export const Logo = styled.Text`
-  color: #57baf7;
-  font-size: 40px;
-  font-style: italic;
-  font-weight: 700;
-`
