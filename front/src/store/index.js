@@ -6,13 +6,11 @@ import {
 } from 'redux'
 import thunk from 'redux-thunk'
 
-import PostReducer from './post/reducer'
 import AuthenticationReducer from './authentication/reducer'
 
 const enhancers = []
 const middleware = [thunk]
 const rootReducer = combineReducers({
-  user: PostReducer,
   authentication: AuthenticationReducer
 })
 
