@@ -67,7 +67,7 @@ const LoginScreen = (props) => {
           <IconAntDesign
             style={GlobalStyle.Icon}
             name='user'
-            size={35}
+            size={25}
             color='#fff' />
         </ContainerItem>
 
@@ -80,7 +80,7 @@ const LoginScreen = (props) => {
           <IconFontisto
             style={GlobalStyle.Icon}
             name='key'
-            size={35}
+            size={25}
             color='#fff' />
         </ContainerItem>
 

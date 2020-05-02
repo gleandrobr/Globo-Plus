@@ -3,6 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'react-native'
 
+// third imports
+import SecureStorage from 'react-native-secure-storage'
+
+// project imports
+import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
+
 // redux
 import { checkUserToken } from '../../store/authentication/action'
 

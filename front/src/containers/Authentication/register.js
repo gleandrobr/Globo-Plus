@@ -51,7 +51,7 @@ const RegisterScreen = (props) => {
             style={GlobalStyle.Icon}
             name='email'
             color='#fff'
-            size={35} />
+            size={25} />
         </ContainerItem>
         
         <ContainerItem>
@@ -64,7 +64,7 @@ const RegisterScreen = (props) => {
             style={GlobalStyle.Icon}
             name='user'
             color='#fff'
-            size={35} />
+            size={25} />
         </ContainerItem>
 
         <ContainerItem>
@@ -78,7 +78,7 @@ const RegisterScreen = (props) => {
             style={GlobalStyle.Icon}
             name='key'
             color='#fff'
-            size={35} />
+            size={25} />
         </ContainerItem>
 
         <Button onPress={props.handleSubmit}>
