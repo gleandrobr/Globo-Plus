@@ -1,6 +1,7 @@
 // react imports
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Image } from 'react-native'
 
 // third imports
 import SecureStorage from 'react-native-secure-storage'
@@ -13,9 +14,10 @@ import { checkUserToken } from '../../store/authentication/action'
 
 // local imports
 import {
-  Container,
-  Logo
+  Container
 } from './style'
+
+import logo from '../../assets/logo.png'
 
 const SplashScreen = (props) => {
   const [isCalledAPI, setCalledAPI] = useState(false)
@@ -43,7 +45,7 @@ const SplashScreen = (props) => {
 
   return (
     <Container>
-      <Logo>Globo Plus</Logo>
+      <Image source={logo} />
     </Container>
   )
 }
