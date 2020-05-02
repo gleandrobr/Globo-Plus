@@ -1,6 +1,7 @@
 // react imports
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { StyleSheet } from 'react-native'
 
 //IconAntDesign
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
@@ -21,15 +22,21 @@ import {
   Logo,
   InputField,
   HyperLink,
-  ContainerLogo,
   ContainerView,
   ContainerItem,
-  Icon,
   Button,
   Text
 } from './styles'
 
 import logo from '../../assets/logo.png'
+
+//Global Styles
+const GlobalStyle = StyleSheet.create({
+  Icon: {
+    position: "absolute",
+    right: 1
+  }
+})
 
 const LoginScreen = (props) => {
 
@@ -50,24 +57,20 @@ const LoginScreen = (props) => {
 
   return (
     <Container>
-      <ContainerLogo>
-        <Logo source={logo} />
-      </ContainerLogo>
+      <Logo source={logo} />
       <ContainerView>
-
         <ContainerItem>
           <InputField
             placeholder='Digite seu login'
             value={props.values.email}
             onChangeText={text => props.setFieldValue('email', text)}
           />
-          <Icon>
-            <IconAntDesign
-              name='user'
-              size={35}
-              color='#fff'
-            />
-          </Icon>
+          <IconAntDesign
+            style={GlobalStyle.Icon}
+            name='user'
+            size={35}
+            color='#fff'
+          />
         </ContainerItem>
         <ContainerItem>
           <InputField
@@ -76,13 +79,12 @@ const LoginScreen = (props) => {
             secureTextEntry
             onChangeText={text => props.setFieldValue('password', text)}
           />
-          <Icon>
-            <IconFontisto
-              name='key'
-              size={35}
-              color='#fff'
-            />
-          </Icon>
+          <IconFontisto
+            style={GlobalStyle.Icon}
+            name='key'
+            size={35}
+            color='#fff'
+          />
         </ContainerItem>
 
         <Button onPress={props.handleSubmit}>

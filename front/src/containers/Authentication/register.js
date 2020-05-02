@@ -1,6 +1,7 @@
 // react imports
 import React from 'react'
 import { connect } from 'react-redux'
+import { StyleSheet } from 'react-native'
 
 //IconAntDesign
 import IconMaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -19,24 +20,26 @@ import {
   Logo,
   InputField,
   HyperLink,
-  ContainerLogo,
   ContainerView,
   ContainerItem,
-  Icon,
   Button,
   Text
 } from './styles'
 import logo from '../../assets/logo.png'
 
+//Global Styles
+const GlobalStyle = StyleSheet.create({
+  Icon: {
+    position: "absolute",
+    right: 1
+  }
+})
+
 const RegisterScreen = (props) => {
 
   return (
     <Container>
-
-      <ContainerLogo>
-        <Logo source={logo} />
-      </ContainerLogo>
-
+      <Logo source={logo} />
       <ContainerView>
         <ContainerItem>
           <InputField
@@ -44,13 +47,12 @@ const RegisterScreen = (props) => {
             value={props.values.username}
             onChangeText={text => props.setFieldValue('username', text)} />
 
-          <Icon>
-            <IconMaterialIcons
-              name='email'
-              color='#fff'
-              size={35}
-            />
-          </Icon>
+          <IconMaterialIcons
+            style={GlobalStyle.Icon}
+            name='email'
+            color='#fff'
+            size={35}
+          />
         </ContainerItem>
 
         <ContainerItem>
@@ -59,13 +61,12 @@ const RegisterScreen = (props) => {
             value={props.values.email}
             onChangeText={text => props.setFieldValue('email', text)} />
 
-          <Icon>
-            <IconFontAwesome5
-              name='user'
-              color='#fff'
-              size={35}
-            />
-          </Icon>
+          <IconFontAwesome5
+            style={GlobalStyle.Icon}
+            name='user'
+            color='#fff'
+            size={35}
+          />
         </ContainerItem>
 
         <ContainerItem>
@@ -75,13 +76,12 @@ const RegisterScreen = (props) => {
             secureTextEntry
             onChangeText={text => props.setFieldValue('password', text)} />
 
-          <Icon>
-            <IconFontisto
-              name='key'
-              color='#fff'
-              size={35}
-            />
-          </Icon>
+          <IconFontisto
+            style={GlobalStyle.Icon}
+            name='key'
+            color='#fff'
+            size={35}
+          />
         </ContainerItem>
 
         <Button onPress={props.handleSubmit}>

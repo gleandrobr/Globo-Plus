@@ -11,16 +11,13 @@ export const ContainerView = styled.View`
   flex: 1;
 `
 
-export const ContainerLogo = styled.View`
-  margin: 20% auto;
-`
-
 export const ContainerItem = styled.View`
   flex-direction: row;
   align-items: center;
 `
 
 export const Logo = styled.Image`
+  margin: 20% auto;
   width: 150px;
   height: 150px;
 `
@@ -41,11 +38,6 @@ export const HyperLink = styled.Text`
   color: #fff;
   margin: 20% auto;
   text-decoration: underline;
-`
-
-export const Icon = styled.View`
-  position: absolute;
-  right: 1px;
 `
 
 export const Button = styled.TouchableOpacity`
