@@ -2,10 +2,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-//Icons
-import IconEf from 'react-native-vector-icons/MaterialIcons'
-import IconUser from 'react-native-vector-icons/FontAwesome5'
-import IconKey from 'react-native-vector-icons/Fontisto'
+//IconAntDesign
+import IconMaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import IconFontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import IconFontisto from 'react-native-vector-icons/Fontisto'
 
 
 // third imports
@@ -25,7 +25,7 @@ import {
   Icon,
   Button,
   Text
-} from './styleRegister'
+} from './styles'
 import logo from '../../assets/logo.png'
 
 const RegisterScreen = (props) => {
@@ -45,7 +45,7 @@ const RegisterScreen = (props) => {
             onChangeText={text => props.setFieldValue('username', text)} />
 
           <Icon>
-            <IconEf
+            <IconMaterialIcons
               name='email'
               color='#fff'
               size={35}
@@ -60,7 +60,7 @@ const RegisterScreen = (props) => {
             onChangeText={text => props.setFieldValue('email', text)} />
 
           <Icon>
-            <IconUser
+            <IconFontAwesome5
               name='user'
               color='#fff'
               size={35}
@@ -76,7 +76,7 @@ const RegisterScreen = (props) => {
             onChangeText={text => props.setFieldValue('password', text)} />
 
           <Icon>
-            <IconKey
+            <IconFontisto
               name='key'
               color='#fff'
               size={35}

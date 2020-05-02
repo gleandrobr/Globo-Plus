@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-//Icons
-import IconUser from 'react-native-vector-icons/AntDesign'
-import IconKey from 'react-native-vector-icons/Fontisto'
+//IconAntDesign
+import IconAntDesign from 'react-native-vector-icons/AntDesign'
+import IconFontisto from 'react-native-vector-icons/Fontisto'
 
 
 // third imports
@@ -27,7 +27,7 @@ import {
   Icon,
   Button,
   Text
-} from './styleLogin'
+} from './styles'
 
 import logo from '../../assets/logo.png'
 
@@ -62,7 +62,7 @@ const LoginScreen = (props) => {
             onChangeText={text => props.setFieldValue('email', text)}
           />
           <Icon>
-            <IconUser
+            <IconAntDesign
               name='user'
               size={35}
               color='#fff'
@@ -77,7 +77,7 @@ const LoginScreen = (props) => {
             onChangeText={text => props.setFieldValue('password', text)}
           />
           <Icon>
-            <IconKey
+            <IconFontisto
               name='key'
               size={35}
               color='#fff'
