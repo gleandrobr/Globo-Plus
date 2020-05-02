@@ -41,7 +41,6 @@ const ProfileScreen = (props) => {
   }
 
   const logout = () => {
-    console.log('CLicked')
     SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, '', SecureStorageConfig)
 
     props.navigation.navigate('Login')
