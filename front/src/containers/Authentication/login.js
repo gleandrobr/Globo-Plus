@@ -63,34 +63,29 @@ const LoginScreen = (props) => {
           <InputField
             placeholder='Digite seu login'
             value={props.values.email}
-            onChangeText={text => props.setFieldValue('email', text)}
-          />
+            onChangeText={text => props.setFieldValue('email', text)} />
           <IconAntDesign
             style={GlobalStyle.Icon}
             name='user'
             size={35}
-            color='#fff'
-          />
+            color='#fff' />
         </ContainerItem>
+
         <ContainerItem>
           <InputField
             placeholder='Digite sua senha'
             value={props.values.password}
             secureTextEntry
-            onChangeText={text => props.setFieldValue('password', text)}
-          />
+            onChangeText={text => props.setFieldValue('password', text)} />
           <IconFontisto
             style={GlobalStyle.Icon}
             name='key'
             size={35}
-            color='#fff'
-          />
+            color='#fff' />
         </ContainerItem>
 
         <Button onPress={props.handleSubmit}>
-          <Text
-            font={'20px'}
-          >Conectar</Text>
+          <Text font={'20px'} >Conectar</Text>
         </Button>
 
         <HyperLink

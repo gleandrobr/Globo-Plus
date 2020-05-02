@@ -51,10 +51,9 @@ const RegisterScreen = (props) => {
             style={GlobalStyle.Icon}
             name='email'
             color='#fff'
-            size={35}
-          />
+            size={35} />
         </ContainerItem>
-
+        
         <ContainerItem>
           <InputField
             placeholder='Digite seu login'
@@ -65,8 +64,7 @@ const RegisterScreen = (props) => {
             style={GlobalStyle.Icon}
             name='user'
             color='#fff'
-            size={35}
-          />
+            size={35} />
         </ContainerItem>
 
         <ContainerItem>
@@ -80,8 +78,7 @@ const RegisterScreen = (props) => {
             style={GlobalStyle.Icon}
             name='key'
             color='#fff'
-            size={35}
-          />
+            size={35} />
         </ContainerItem>
 
         <Button onPress={props.handleSubmit}>
