@@ -41,13 +41,37 @@ export const OptionItem = styled.TouchableOpacity`
   margin: 0 5% 10%;
   justify-content: center;
   align-items: center;
-  /* ${({ active }) => active && `
-    border: 2px solid #43e051;
-  `} */
 `
 export const OptionItemText = styled.Text`
   position: absolute;
   font-size: 30px;
   color: #ddd;
   font-style: italic;
+`
+
+export const Group = styled.View`
+  margin: 10% auto 0;
+  width: 90%;
+`
+export const GroupTitle = styled.Text`
+  display: flex;
+  text-align: center;
+  border-bottom-width: 3px;
+  border-bottom-color: ${props => props.color};
+  color: ${props => props.color};
+  font-size: 28px;
+  font-weight: bold;
+`
+export const GroupItem = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 0;
+  margin-top: 3%;
+`
+export const GroupItemText = styled.Text`
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
 `

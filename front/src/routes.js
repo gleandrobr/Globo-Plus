@@ -9,6 +9,7 @@ import LoginScreen from './containers/Authentication/login'
 import RegisterScreen from './containers/Authentication/register'
 import MainScreen from './containers/Main'
 import ChooseFavoritesScreen from './containers/Choose-Favorites'
+import ChossePreferenceScreen from './containers/Choose-Favorites/preferences'
 
 const Stack = createStackNavigator()
 
@@ -16,7 +17,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Splash'
+        initialRouteName='ChoosePreferences'
         screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name='Splash'
@@ -33,6 +34,9 @@ const Routes = () => {
         <Stack.Screen
           name='ChooseFavorites'
           component={ChooseFavoritesScreen} />
+        <Stack.Screen
+          name='ChoosePreferences'
+          component={ChossePreferenceScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
