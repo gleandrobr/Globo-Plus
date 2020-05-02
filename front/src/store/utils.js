@@ -18,9 +18,9 @@ export const requests = {
       })
   },
 
-  post(url, data, type) {
+  post(url, data, config, type) {
     return dispatch => axios
-      .post(`${url}`, data)
+      .post(`${url}`, data, config)
       .then(response => {
         dispatch({
           type: type,

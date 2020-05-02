@@ -24,6 +24,16 @@ class UserController {
     return users
   }
 
+  async check_login({ response, auth }) {
+    try {
+      await auth.check()
+
+      response.send({ valid: true })
+    } catch(error) {
+      response.send({ valid: false })
+    }
+  }
+
 }
 
 module.exports = UserController
