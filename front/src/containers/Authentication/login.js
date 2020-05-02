@@ -48,7 +48,7 @@ const LoginScreen = (props) => {
         async function saveLogin() {
           await SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, authentication.token, SecureStorageConfig)
 
-          props.navigation.navigate('Register')  // TODO: redirect to home screen when create it
+          props.navigation.navigate('Home')
         }
         saveLogin()
       }
