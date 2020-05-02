@@ -11,9 +11,6 @@ import FAIcon from 'react-native-vector-icons/FontAwesome'
 import Octions from 'react-native-vector-icons/Octicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
-// Project imports
-// import BottomNavigation from '../../components/bottom-navigation'
-
 // local imports
 import {
   GlobalStyle,
@@ -26,7 +23,8 @@ import {
   ProfileInfoContent,
   ProfileInfoItem,
 
-  ListItem
+  ListItem,
+  ListItemText
 } from './style'
 
 const ProfileScreen = () => {
@@ -56,19 +54,19 @@ const ProfileScreen = () => {
       <View style={{ marginTop: '5%' }}>
         <ListItem>
           <FAIcon size={20} name='edit' />
-          <SubTitle style={{ marginLeft: 10 }}>Alterar informações</SubTitle>
+          <ListItemText style={{ marginLeft: 10 }}>Alterar informações</ListItemText>
         </ListItem>
         <ListItem>
           <MaterialIcon size={20} name='local-movies' />
-          <SubTitle style={{ marginLeft: 10 }}>Globo Play</SubTitle>
+          <ListItemText style={{ marginLeft: 10 }}>Globo Play</ListItemText>
         </ListItem>
         <ListItem>
           <Octions size={20} name='settings' />
-          <SubTitle style={{ marginLeft: 10 }}>Configurações</SubTitle>
+          <ListItemText style={{ marginLeft: 10 }}>Configurações</ListItemText>
         </ListItem>
         <ListItem>
           <FAIcon size={20} name='moon-o' />
-          <SubTitle style={{ marginLeft: 10 }}>Modo escuro</SubTitle>
+          <ListItemText style={{ marginLeft: 10 }}>Modo escuro</ListItemText>
           <Switch
             trackColor={{ false: '#767577', true: '#4623DE' }}
             thumbColor='#f4f3f4'

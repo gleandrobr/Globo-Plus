@@ -51,3 +51,7 @@ export const ListItem = styled.View`
   margin: auto;
   margin-top: 4%;
 `
+export const ListItemText = styled.Text`
+  font-size: 20px;
+  color: #333333;
+`
