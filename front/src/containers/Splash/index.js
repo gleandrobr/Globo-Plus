@@ -12,7 +12,7 @@ import logo from '../../assets/logo.png'
 const SplashScreen = (props) => {
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate('Home')
+      props.navigation.navigate('Login')
     }, 4000)
   }, [])
 
