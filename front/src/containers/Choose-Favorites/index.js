@@ -10,19 +10,24 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 // local imports
 import {
+  GlobalStyle,
+
   Container,
   Title,
   OptionsContainer,
   OptionItem,
   OptionItemText,
-  ButtonAction,
-  ButtonActionText
 } from './style'
 
 const ChooseItem = ({color, icon, text, onPress, active}) => (
   <OptionItem color={color} onPress={onPress} active={active}>
     <MaterialCommunityIcons name={icon} size={90} />
     <OptionItemText>{text}</OptionItemText>
+    {
+      active && (
+        <MaterialCommunityIcons name='heart' style={GlobalStyle.heathSelection} />
+      )
+    }
   </OptionItem>
 )
 
@@ -36,9 +41,6 @@ const ChooseFavoritesScreen = () => {
     else {
       setChoose(choose.filter(item => item != itemPos))
     }
-
-    console.log(itemPos)
-    console.log(choose)
   }
 
   return (
@@ -85,9 +87,11 @@ const ChooseFavoritesScreen = () => {
             onPress={() => handleClick(6)} />
         </OptionsContainer>
 
-        <ButtonAction>
-          <ButtonActionText>Continuar</ButtonActionText>
-        </ButtonAction>
+        <MaterialCommunityIcons
+          name='arrow-right-thick'
+          size={60}
+          color='#fff'
+          style={{ marginLeft: 'auto', marginRight: '2%' }}/>
       </ScrollView>
     </Container>
   )

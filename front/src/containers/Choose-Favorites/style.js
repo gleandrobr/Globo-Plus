@@ -1,6 +1,17 @@
+// react imports
+import { Dimensions, StyleSheet } from 'react-native'
+
+// third imports
 import styled from 'styled-components'
 
-import { Dimensions } from 'react-native'
+
+export const GlobalStyle = StyleSheet.create({
+  heathSelection: {
+    color: 'red',
+    position: 'absolute',
+    fontSize: 70
+  }
+})
 
 export const Container = styled.SafeAreaView`
   background: black;
@@ -30,25 +41,13 @@ export const OptionItem = styled.TouchableOpacity`
   margin: 0 5% 10%;
   justify-content: center;
   align-items: center;
-  ${({ active }) => active && `
+  /* ${({ active }) => active && `
     border: 2px solid #43e051;
-  `}
+  `} */
 `
 export const OptionItemText = styled.Text`
   position: absolute;
   font-size: 30px;
   color: #ddd;
   font-style: italic;
-`
-export const ButtonAction = styled.TouchableOpacity`
-  background-color: #4CAF50;
-  width: 50%;
-  height: 60px;
-  margin: 10% auto;
-  border-radius: 24px;
-  justify-content: center;
-`
-export const ButtonActionText = styled(Title)`
-  margin: 0;
-  font-size: 24px;
 `
