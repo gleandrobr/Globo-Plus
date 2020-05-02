@@ -2,11 +2,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {
-  Button,
-  View,
-  Text
-} from 'react-native'
+//Icons
+import IconEf from 'react-native-vector-icons/MaterialIcons'
+import IconUser from 'react-native-vector-icons/FontAwesome5'
+import IconKey from 'react-native-vector-icons/Fontisto'
+
 
 // third imports
 import { withFormik } from 'formik'
@@ -18,34 +18,75 @@ import {
   Container,
   Logo,
   InputField,
-  HyperLink
-} from './style'
+  HyperLink,
+  ContainerLogo,
+  ContainerView,
+  ContainerItem,
+  Icon,
+  Button,
+  Text
+} from './styleRegister'
+import logo from '../../assets/logo.png'
 
 const RegisterScreen = (props) => {
 
   return (
     <Container>
-      <Logo>Globo Plus</Logo>
 
-      <View>
-        <Text>Nome de usuário</Text>
-        <InputField
-          value={props.values.username}
-          onChangeText={text => props.setFieldValue('username', text)} />
+      <ContainerLogo>
+        <Logo source={logo} />
+      </ContainerLogo>
 
-        <Text>Email</Text>
-        <InputField
-          value={props.values.email}
-          onChangeText={text => props.setFieldValue('email', text)} />
+      <ContainerView>
+        <ContainerItem>
+          <InputField
+            placeholder='Digite seu email'
+            value={props.values.username}
+            onChangeText={text => props.setFieldValue('username', text)} />
 
-        <Text>Senha</Text>
-        <InputField
-          value={props.values.password}
-          onChangeText={text => props.setFieldValue('password', text)} />
+          <Icon>
+            <IconEf
+              name='email'
+              color='#fff'
+              size={35}
+            />
+          </Icon>
+        </ContainerItem>
 
-        <Button
-          onPress={props.handleSubmit}
-          title='Cadastrar' />
+        <ContainerItem>
+          <InputField
+            placeholder='Digite seu login'
+            value={props.values.email}
+            onChangeText={text => props.setFieldValue('email', text)} />
+
+          <Icon>
+            <IconUser
+              name='user'
+              color='#fff'
+              size={35}
+            />
+          </Icon>
+        </ContainerItem>
+
+        <ContainerItem>
+          <InputField
+            placeholder='Digite sua senha'
+            value={props.values.password}
+            secureTextEntry
+            onChangeText={text => props.setFieldValue('password', text)} />
+
+          <Icon>
+            <IconKey
+              name='key'
+              color='#fff'
+              size={35}
+            />
+          </Icon>
+        </ContainerItem>
+
+        <Button onPress={props.handleSubmit}>
+          <Text font={'20px'} >Conectar</Text>
+        </Button>
 
         <HyperLink
           onPress={() => {
@@ -53,7 +94,7 @@ const RegisterScreen = (props) => {
           }}>
           Já possui uma conta?
         </HyperLink>
-      </View>
+      </ContainerView>
     </Container>
   )
 }
@@ -81,6 +122,6 @@ const mapStateToProps = ({ authentication }) => {
 
 export default connect(
   mapStateToProps, {
-    registerUser
-  }
+  registerUser
+}
 )(formikEnhancer)
