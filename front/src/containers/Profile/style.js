@@ -43,7 +43,7 @@ export const ProfileInfoItem = styled.View`
   margin: 0 5%;
   width: 40%;
 `
-export const ListItem = styled.View`
+export const ListItem = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;

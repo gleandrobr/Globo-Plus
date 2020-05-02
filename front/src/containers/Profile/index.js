@@ -11,6 +11,11 @@ import FAIcon from 'react-native-vector-icons/FontAwesome'
 import Octions from 'react-native-vector-icons/Octicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
+import SecureStorage from 'react-native-secure-storage'
+
+// project imports
+import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
+
 // local imports
 import {
   GlobalStyle,
@@ -27,11 +32,18 @@ import {
   ListItemText
 } from './style'
 
-const ProfileScreen = () => {
+const ProfileScreen = (props) => {
   const [darkTheme, setDarkTheme] = useState(false)
 
   const toggleSwitch = () => {
     setDarkTheme(!darkTheme)
+  }
+
+  const logout = () => {
+    console.log('CLicked')
+    SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, '', SecureStorageConfig)
+
+    props.navigation.navigate('Login')
   }
 
   return (
@@ -74,6 +86,10 @@ const ProfileScreen = () => {
             onValueChange={toggleSwitch}
             value={darkTheme}
             style={GlobalStyle.darkThemeSwitch}/>
+        </ListItem>
+        <ListItem onPress={logout}>
+          <MaterialIcon size={20} name='exit-to-app' />
+          <ListItemText style={{ marginLeft: 10 }}>Sair</ListItemText>
         </ListItem>
       </View>
     </Container>
