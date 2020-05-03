@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { StyleSheet } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 //IconAntDesign
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
@@ -25,7 +26,8 @@ import {
   ContainerView,
   ContainerItem,
   Button,
-  Text
+  Text,
+  ContainerForm
 } from './styles'
 
 import logo from '../../assets/logo.png'
@@ -34,7 +36,8 @@ import logo from '../../assets/logo.png'
 const GlobalStyle = StyleSheet.create({
   Icon: {
     position: "absolute",
-    right: 1
+    right: 1,
+    bottom: 0,
   }
 })
 
@@ -59,43 +62,49 @@ const LoginScreen = (props) => {
     <Container>
       <Logo source={logo} />
       <ContainerView>
-        <ContainerItem>
-          <InputField
-            placeholder='Digite seu login'
-            value={props.values.email}
-            onChangeText={text => props.setFieldValue('email', text)} />
-          <IconAntDesign
-            style={GlobalStyle.Icon}
-            name='user'
-            size={25}
-            color='#fff' />
-        </ContainerItem>
+        <KeyboardAwareScrollView>
+          <ContainerItem>
+            <ContainerForm>
+              <InputField
+                placeholder='Digite seu login'
+                value={props.values.email}
+                onChangeText={text => props.setFieldValue('email', text)} />
+              <IconAntDesign
+                style={GlobalStyle.Icon}
+                name='user'
+                size={25}
+                color='#fff' />
+            </ContainerForm>
+          </ContainerItem>
 
-        <ContainerItem>
-          <InputField
-            placeholder='Digite sua senha'
-            value={props.values.password}
-            secureTextEntry
-            onChangeText={text => props.setFieldValue('password', text)} />
-          <IconFontisto
-            style={GlobalStyle.Icon}
-            name='key'
-            size={25}
-            color='#fff' />
-        </ContainerItem>
+          <ContainerItem>
+            <ContainerForm>
+              <InputField
+                placeholder='Digite sua senha'
+                value={props.values.password}
+                secureTextEntry
+                onChangeText={text => props.setFieldValue('password', text)} />
+              <IconFontisto
+                style={GlobalStyle.Icon}
+                name='key'
+                size={25}
+                color='#fff' />
+            </ContainerForm>
+          </ContainerItem>
 
-        <Button onPress={props.handleSubmit}>
-          <Text font={'20px'} >Conectar</Text>
-        </Button>
+          <Button onPress={props.handleSubmit}>
+            <Text font={'20px'} >Conectar</Text>
+          </Button>
 
-        <HyperLink
-          onPress={() => {
-            props.navigation.navigate('Register')
-          }}>
-          Criar uma nova conta
-        </HyperLink>
+          <HyperLink
+            onPress={() => {
+              props.navigation.navigate('Register')
+            }}>
+            Criar uma nova conta
+          </HyperLink>
+        </KeyboardAwareScrollView>
       </ContainerView>
-    </Container>
+    </Container >
   )
 }
 
