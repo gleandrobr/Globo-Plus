@@ -81,8 +81,10 @@ const RegisterScreen = (props) => {
             size={25} />
         </ContainerItem>
 
-        <Button onPress={props.handleSubmit}>
-          <Text font={'20px'}>Conectar</Text>
+        <Button
+          onPress={props.handleSubmit}
+          background={'#1976D2'}>
+          <Text font={'20px'} >Conectar</Text>
         </Button>
 
         <HyperLink
