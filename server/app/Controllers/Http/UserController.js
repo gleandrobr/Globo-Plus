@@ -20,6 +20,16 @@ class UserController {
     return result
   }
 
+  async is_first_login({ request, auth }) {
+    let user = null
+    try {
+      user = await auth.getUser()
+      return { is_first_login: user.first_login }
+    } catch(error) {
+      return { invalid_token: true }
+    }
+  }
+
   async check_login({ response, auth }) {
     try {
       await auth.check()
