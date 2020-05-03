@@ -61,7 +61,7 @@ const ChooseFavoritesScreen = (props) => {
     if(authenticationToken) {
       props.setUserFavorites({ favorites_choices: choose }, authenticationToken)
     } else {
-      props.navigation.navigate('Login')
+      props.navigation.replace('Login')
     }
   }
 
