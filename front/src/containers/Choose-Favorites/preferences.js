@@ -70,16 +70,15 @@ const PreferenceScreen = (props) => {
     <Container>
       <ScrollView>
         <Title>Escolha suas {'\n'}preferências</Title>
-
         {
           Object.keys(preferences['favorites']).map((item) => {
+            const preference = preferences['favorites'][item]
             return (
               <Group key={item}>
-                <GroupTitle color='#2ED57B'>{preferences['favorites'][item].name}</GroupTitle>
+                <GroupTitle color={preference.color}>{preference.name}</GroupTitle>
 
                 {
                   Object.keys(preferences['results'][item]).map((option) => {
-
                     return (
                       <GroupItem key={option}>
                         <GroupItemText>{preferences['results'][item][option].name}</GroupItemText>

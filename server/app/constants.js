@@ -30,22 +30,28 @@ const TECH_GAME = 2
 
 exports.CATEGORIES_INFO = {
   [USER_FAVORITES_MOVIE]: {
-    name: 'Filme'
+    name: 'Filme',
+    color: '#2ED57B'
   },
   [USER_FAVORITES_NEWS]: {
-    name: 'Notícias'
+    name: 'Notícias',
+    color: '#73412F'
   },
   [USER_FAVORITES_COOK]: {
-    name: 'Cozinha'
+    name: 'Cozinha',
+    color: '#F2D64B'
   },
   [USER_FAVORITES_MUSIC]: {
-    name: 'Músicas'
+    name: 'Músicas',
+    color: '#742ed5'
   },
   [USER_FAVORITES_SPORT]: {
-    name: 'Esportes'
+    name: 'Esportes',
+    color: '#d52e2e'
   },
   [USER_FAVORITES_TECH]: {
-    name: 'Tech'
+    name: 'Tech',
+    color: '#2e98d5'
   }
 }
 
