@@ -27,7 +27,7 @@ export const Reminder = styled.View`
   background: #0311FC;
   width: 20px;
   height: 20px;
-  border-radius: 50px;
+  border-radius: 15px;
   margin-left: 15%;
 `
 
