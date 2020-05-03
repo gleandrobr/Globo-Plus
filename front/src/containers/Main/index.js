@@ -11,6 +11,7 @@ import Octicons from 'react-native-vector-icons/Octicons'
 // project imports
 import ProfileScreen from '../Profile'
 import NotificationScreen from '../Notification'
+import FeedScreen from '../Feed'
 
 const Profile = () => (
   <Text>Profile</Text>
@@ -20,7 +21,7 @@ const Tab = createMaterialBottomTabNavigator()
 function MainScreen() {
   return (
     <Tab.Navigator
-      initialRouteName='Profile'
+      initialRouteName='Home'
       activeColor='#fff'
       barStyle={{ backgroundColor: '#4623DE' }} >
       <Tab.Screen
@@ -34,7 +35,7 @@ function MainScreen() {
         }} />
       <Tab.Screen
         name='Home'
-        component={Profile}
+        component={FeedScreen}
         options={{
           tabBarLabel: 'Inicio',
           tabBarIcon: ({ color }) => (
