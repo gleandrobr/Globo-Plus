@@ -15,7 +15,7 @@ import SecureStorage from 'react-native-secure-storage'
 import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 
 // redux
-import { setUserPreferences } from '../../store/preferences/action'
+import { setUserFavorites } from '../../store/preferences/action'
 
 // local imports
 import {
@@ -56,7 +56,7 @@ const ChooseFavoritesScreen = (props) => {
     let authenticationToken = await SecureStorage.getItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, SecureStorageConfig)
 
     if(authenticationToken) {
-      props.setUserPreferences({ favorites_choices: choose }, authenticationToken)
+      props.setUserFavorites({ favorites_choices: choose }, authenticationToken)
     } else {
       props.navigation.navigate('Login')
     }
@@ -134,6 +134,6 @@ const mapStateToProps = ({ preferences }) => {
 
 export default connect(
   mapStateToProps, {
-    setUserPreferences
+    setUserFavorites
   }
 )(ChooseFavoritesScreen)
