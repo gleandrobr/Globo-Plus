@@ -9,6 +9,11 @@ export const Container = styled.SafeAreaView`
 
 export const ContainerView = styled.View`
   flex: 1;
+  width: 100%;
+`
+export const ContainerForm = styled.View`
+  margin: 15px auto;
+  height: 40px;
 `
 
 export const ContainerItem = styled.View`
@@ -26,10 +31,11 @@ export const InputField = styled.TextInput.attrs({
   placeholderTextColor: '#fff'
 })`
   width: 250px;
+  height: 30px;
   border: none;
   border-bottom-color: #fff;
   border-bottom-width: 2px;
-  margin: 15px 0;
+  margin: 15px auto;
   padding: 1px;
   color: #fff;
 `
