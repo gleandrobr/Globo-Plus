@@ -92,6 +92,25 @@ class UserController {
     response.send({results: final})
   }
 
+  async set_user_categories_preferences({ request, response, auth }) {
+    let data = request.only(['categories'])
+
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+    try {
+      user.preferences = data
+      user.save()
+    } catch(error) {
+      return { successfully: false }
+    }
+
+    response.send({ successfully: true })
+  }
 }
 
 module.exports = UserController

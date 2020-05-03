@@ -57,6 +57,32 @@ const PreferenceScreen = (props) => {
       setIsLoading(false)
   }, [props.preferences])
 
+  const [selectedOptions, setSelectedOptions] = useState({})
+  const toggleSwitch = (category, option) => {
+    if(selectedOptions.hasOwnProperty(category)) {
+      if(selectedOptions[category].indexOf(option) != -1) {
+        setSelectedOptions({
+          ...selectedOptions,
+          [category]: selectedOptions[category].filter(item => item != option)
+        })
+      } else {
+        setSelectedOptions({
+          ...selectedOptions,
+          [category]: [...selectedOptions[category], option]
+        })
+      }
+    } else {
+      setSelectedOptions({
+        ...selectedOptions,
+        [category]: [option]
+      })
+    }
+  }
+
+  const handleSubmit = () => {
+
+  }
+
   if(isLoading) {
     return (
       <Container>
@@ -71,24 +97,29 @@ const PreferenceScreen = (props) => {
       <ScrollView>
         <Title>Escolha suas {'\n'}preferências</Title>
         {
-          Object.keys(preferences['favorites']).map((item) => {
-            const preference = preferences['favorites'][item]
+          Object.keys(preferences['favorites']).map((category) => {
+            const preference = preferences['favorites'][category]
+
             return (
-              <Group key={item}>
+              <Group key={category}>
                 <GroupTitle color={preference.color}>{preference.name}</GroupTitle>
 
                 {
-                  Object.keys(preferences['results'][item]).map((option) => {
+                  Object.keys(preferences['results'][category]).map((option) => {
+                    let active = false
+                    if(selectedOptions[category] != undefined) {
+                      active = selectedOptions[category].indexOf(option) != -1
+                    }
+
                     return (
                       <GroupItem key={option}>
-                        <GroupItemText>{preferences['results'][item][option].name}</GroupItemText>
+                        <GroupItemText>{preferences['results'][category][option].name}</GroupItemText>
                         <Switch
-                            trackColor={{ false: '#767577', true: '#4623DE' }}
-                            thumbColor='#f4f3f4'
-                            ios_backgroundColor='#3e3e3e'
-                            // onValueChange={toggleSwitch}
-                            // value={darkTheme}
-                            />
+                          trackColor={{ false: '#767577', true: '#4623DE' }}
+                          thumbColor='#f4f3f4'
+                          ios_backgroundColor='#3e3e3e'
+                          onValueChange={() => toggleSwitch(category, option)}
+                          value={active} />
                       </GroupItem>
                     )
                   })
@@ -101,7 +132,8 @@ const PreferenceScreen = (props) => {
           name='arrow-right-thick'
           size={60}
           color='#fff'
-          style={{ marginLeft: 'auto', marginRight: '2%' }}/>
+          style={{ marginLeft: 'auto', marginRight: '2%' }}
+          onClick={handleSubmit} />
       </ScrollView>
     </Container>
   )
