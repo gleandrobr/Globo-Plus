@@ -44,10 +44,10 @@ export const Button = styled.TouchableOpacity`
   width: 150px;
   height: 40px;
   padding: 1%;
-  background: #4CAF50;
+  background: ${(props) => props.background || '#4CAF50'};
   align-items: center;
   margin: 0 auto;
-  border: 2px solid #fff;
+  border: none;
   border-radius: 12px;
   top: 10%;
 `
