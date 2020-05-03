@@ -2,6 +2,8 @@
 
 const User = use('App/Models/User')
 
+const { CATEGORIES, CATEGORIES_INFO } = require('../../constants')
+
 class UserController {
 
   async register({ request }) {
@@ -54,6 +56,42 @@ class UserController {
     }
     response.send({ successfully: true })
   }
+
+  async get_favorites({ request, response, auth }) {
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+    let final = {}
+    for(let preference of Object.keys(user.preferences)) {
+      final[preference] = CATEGORIES_INFO[preference]
+    }
+
+    response.send({ favorites: final })
+  }
+
+  async get_categories_options({ request, response, auth }) {
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+
+    let preferences = Object.keys(user.preferences)
+    let final = {}
+
+    for(let preference of preferences) {
+      final[preference] = CATEGORIES[preference]
+    }
+
+    response.send({results: final})
+  }
+
 }
 
 module.exports = UserController
