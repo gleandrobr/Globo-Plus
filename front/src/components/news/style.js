@@ -14,7 +14,6 @@ export const Title = styled.Text`
   font-size: 18px;
   color: ${(props) => props.color || '#000'};
 `
-
 export const ContainerIcons = styled.View`
   margin: 2%;
   flex-direction: row-reverse;

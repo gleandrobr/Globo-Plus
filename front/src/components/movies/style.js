@@ -9,13 +9,11 @@ export const Container = styled.View`
   width: ${width * 0.40}px;
   margin-left: ${width * 0.05}px;
 `
-
 export const Title = styled.Text`
   color: #000;
   font-size: 20px;
   text-align: center;
 `
-
 export const ImageMovie = styled.Image`
   width: 100%;
   height: 200px;

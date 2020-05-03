@@ -108,10 +108,8 @@ const Feed = () => {
                   title={item} />
               ))
             }
-
           </ScrollView>
         </ContainerMovies>
-
       </ScrollView>
     </Container>
   )
