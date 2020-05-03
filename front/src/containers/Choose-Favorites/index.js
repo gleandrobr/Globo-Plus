@@ -1,12 +1,21 @@
 // react imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   ScrollView,
   Text
 } from 'react-native'
 
+import { connect } from 'react-redux'
+
 // third imports
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import SecureStorage from 'react-native-secure-storage'
+
+// project imports
+import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
+
+// redux
+import { setUserPreferences } from '../../store/preferences/action'
 
 // local imports
 import {
@@ -31,7 +40,7 @@ const ChooseItem = ({color, icon, text, onPress, active}) => (
   </OptionItem>
 )
 
-const ChooseFavoritesScreen = () => {
+const ChooseFavoritesScreen = (props) => {
   const [choose, setChoose] = useState([])
 
   const handleClick = (itemPos) => {
@@ -42,6 +51,25 @@ const ChooseFavoritesScreen = () => {
       setChoose(choose.filter(item => item != itemPos))
     }
   }
+
+  const handleNextStep = async () => {
+    let authenticationToken = await SecureStorage.getItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, SecureStorageConfig)
+
+    if(authenticationToken) {
+      props.setUserPreferences({ favorites_choices: choose }, authenticationToken)
+    } else {
+      props.navigation.navigate('Login')
+    }
+  }
+
+  useEffect(() => {
+    const { preferences } = props
+
+    if(preferences.successfully)
+      props.navigation.navigate('ChoosePreferences')
+    else  // error on request
+      return
+  }, [props.preferences])
 
   return (
     <Container>
@@ -91,10 +119,21 @@ const ChooseFavoritesScreen = () => {
           name='arrow-right-thick'
           size={60}
           color='#fff'
-          style={{ marginLeft: 'auto', marginRight: '2%' }}/>
+          style={{ marginLeft: 'auto', marginRight: '2%' }}
+          onPress={handleNextStep} />
       </ScrollView>
     </Container>
   )
 }
 
-export default ChooseFavoritesScreen
+const mapStateToProps = ({ preferences }) => {
+  return {
+    preferences
+  }
+}
+
+export default connect(
+  mapStateToProps, {
+    setUserPreferences
+  }
+)(ChooseFavoritesScreen)

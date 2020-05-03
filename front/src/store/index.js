@@ -6,12 +6,15 @@ import {
 } from 'redux'
 import thunk from 'redux-thunk'
 
+// reducers
 import AuthenticationReducer from './authentication/reducer'
+import PreferencesReducer from './preferences/reducer'
 
 const enhancers = []
 const middleware = [thunk]
 const rootReducer = combineReducers({
-  authentication: AuthenticationReducer
+  authentication: AuthenticationReducer,
+  preferences: PreferencesReducer
 })
 
 
