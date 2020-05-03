@@ -46,49 +46,43 @@ const RegisterScreen = (props) => {
         <Logo source={logo} />
         <ContainerView>
           <ContainerItem>
-            <ContainerForm>
-              <InputField
-                placeholder='Digite seu email'
-                value={props.values.username}
-                onChangeText={text => props.setFieldValue('username', text)} />
+            <InputField
+              placeholder='Digite seu login'
+              value={props.values.username}
+              onChangeText={text => props.setFieldValue('username', text)} />
 
-              <IconMaterialIcons
-                style={GlobalStyle.Icon}
-                name='email'
-                color='#fff'
-                size={25} />
-            </ContainerForm>
+            <IconFontAwesome5
+              style={GlobalStyle.Icon}
+              name='user'
+              color='#fff'
+              size={25} />
           </ContainerItem>
 
           <ContainerItem>
-            <ContainerForm>
-              <InputField
-                placeholder='Digite seu login'
-                value={props.values.email}
-                onChangeText={text => props.setFieldValue('email', text)} />
+            <InputField
+              placeholder='Digite seu email'
+              value={props.values.email}
+              onChangeText={text => props.setFieldValue('email', text)} />
 
-              <IconFontAwesome5
-                style={GlobalStyle.Icon}
-                name='user'
-                color='#fff'
-                size={25} />
-            </ContainerForm>
+            <IconMaterialIcons
+              style={GlobalStyle.Icon}
+              name='email'
+              color='#fff'
+              size={25} />
           </ContainerItem>
 
           <ContainerItem>
-            <ContainerForm>
-              <InputField
-                placeholder='Digite sua senha'
-                value={props.values.password}
-                secureTextEntry
-                onChangeText={text => props.setFieldValue('password', text)} />
+            <InputField
+              placeholder='Digite sua senha'
+              value={props.values.password}
+              secureTextEntry
+              onChangeText={text => props.setFieldValue('password', text)} />
 
-              <IconFontisto
-                style={GlobalStyle.Icon}
-                name='key'
-                color='#fff'
-                size={25} />
-            </ContainerForm>
+            <IconFontisto
+              style={GlobalStyle.Icon}
+              name='key'
+              color='#fff'
+              size={25} />
           </ContainerItem>
 
           <Button
@@ -99,12 +93,12 @@ const RegisterScreen = (props) => {
 
           <HyperLink
             onPress={() => {
-              props.navigation.navigate('Login')
+              props.navigation.replace('Login')
             }}>
             Já possui uma conta?
           </HyperLink>
         </ContainerView>
-      </Container >
+      </Container>
     </KeyboardAwareScrollView>
   )
 }
@@ -116,7 +110,7 @@ const formikEnhancer = withFormik({
     await props.registerUser(values)
       .then(async () => {
         // then register, ask to user login again
-        props.navigation.navigate('Login')
+        props.navigation.replace('Login')
       })
       .catch(() => {
         // TODO: error feedback

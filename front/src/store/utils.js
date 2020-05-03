@@ -3,9 +3,9 @@ import axios from 'axios'
 axios.defaults.baseURL = 'http://172.31.255.106:3333/'
 
 export const requests = {
-  get(url, type) {
+  get(url, config, type) {
     return dispatch => axios
-      .get(url)
+      .get(url, config)
       .then(response => {
         dispatch({
           type: type,
