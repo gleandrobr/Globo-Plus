@@ -10,10 +10,11 @@ import {
   GlobalStyle,
 
   Container,
-  ContainerList,
+  ListItem,
   Text,
   Avatar,
-  Reminder
+  Reminder,
+  ContainerView
 } from './style'
 import user from '../../static/images/person.png'
 
@@ -21,159 +22,135 @@ const NotificationScreen = () => {
   return (
     <Container>
       <ScrollView>
-        <ContainerList onPress={() => alert('clicou')}>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
           <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Comentou em sua publicação</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Reagiu em sua publicação</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Começou a te seguir</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
+        </ListItem>
 
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
+        <ListItem>
+          <ContainerView>
+            <Avatar source={user} />
+            <IconOcticons
+              style={GlobalStyle.Icon}
+              size={20}
+              name='bell'
+              color='#4623DE' />
+          </ContainerView>
+          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
           <Reminder />
-        </ContainerList>
-
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
-          <Reminder />
-        </ContainerList>
-
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
-          <Reminder />
-        </ContainerList>
-
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
-          <Reminder />
-        </ContainerList>
-
-        <ContainerList>
-          <IconOcticons
-            style={GlobalStyle.Icon}
-            size={20}
-            name='bell'
-            color='#4623DE' />
-          <Avatar source={user} />
-          <Text color={'#333'} size={'18px'}>Marcou você em uma publição</Text>
-          <Reminder />
-        </ContainerList>
+        </ListItem>
       </ScrollView>
     </Container>
   )
