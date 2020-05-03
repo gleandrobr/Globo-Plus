@@ -11,12 +11,7 @@ import Octicons from 'react-native-vector-icons/Octicons'
 // project imports
 import ProfileScreen from '../Profile'
 import NotificationScreen from '../Notification'
-const Feed = () => (
-  <Text>Feed</Text>
-)
-const Notifications = () => (
-  <Text>Notifications</Text>
-)
+
 const Profile = () => (
   <Text>Profile</Text>
 )
