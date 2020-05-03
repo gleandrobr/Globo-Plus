@@ -1,7 +1,8 @@
 import {
   SET_USER_FAVORITES,
   FETCH_USER_FAVORITES,
-  FETCH_CATEGORIES_OPTIONS
+  FETCH_CATEGORIES_OPTIONS,
+  SET_USER_CATEGORIES_PREFERENCES
 } from './types'
 
 export default (state = {}, action) => {
@@ -9,6 +10,7 @@ export default (state = {}, action) => {
     case SET_USER_FAVORITES:
     case FETCH_USER_FAVORITES:
     case FETCH_CATEGORIES_OPTIONS:
+    case SET_USER_CATEGORIES_PREFERENCES:
       return {
         ...state,
         ... action.payload

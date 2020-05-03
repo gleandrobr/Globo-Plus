@@ -19,7 +19,8 @@ import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 // redux
 import {
   fetchUserFavorites,
-  fetchCategoriesOptions
+  fetchCategoriesOptions,
+  setUserCategoriesPreferences
 } from '../../store/preferences/action'
 
 // local imports
@@ -79,9 +80,24 @@ const PreferenceScreen = (props) => {
     }
   }
 
-  const handleSubmit = () => {
+  const [submited, setSubmited] = useState(false)
+  const handleSubmit = async () => {
+    let authenticationToken = await SecureStorage.getItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, SecureStorageConfig)
 
+    if(authenticationToken) {
+      props.setUserCategoriesPreferences({ categories: selectedOptions }, authenticationToken)
+      setSubmited(true)
+    } else {
+      props.navigation.navigate('Login')
+    }
   }
+
+  useEffect(() => {
+    if(submited) {
+      if(props.preferences.successfully)
+        props.navigation.navigate('Home')
+    }
+  }, [props.preferences])
 
   if(isLoading) {
     return (
@@ -133,7 +149,7 @@ const PreferenceScreen = (props) => {
           size={60}
           color='#fff'
           style={{ marginLeft: 'auto', marginRight: '2%' }}
-          onClick={handleSubmit} />
+          onPress={handleSubmit} />
       </ScrollView>
     </Container>
   )
@@ -147,6 +163,7 @@ const mapStateToProps = ({ preferences }) => {
 export default connect(
   mapStateToProps, {
     fetchUserFavorites,
-    fetchCategoriesOptions
+    fetchCategoriesOptions,
+    setUserCategoriesPreferences
   }
 )(PreferenceScreen)

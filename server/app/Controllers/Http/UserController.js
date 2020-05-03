@@ -103,7 +103,7 @@ class UserController {
     }
 
     try {
-      user.preferences = data
+      user.preferences = data['categories']
       user.save()
     } catch(error) {
       return { successfully: false }
