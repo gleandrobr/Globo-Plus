@@ -59,10 +59,10 @@ const LoginScreen = (props) => {
   }, [props.authentication])
 
   return (
-    <Container>
-      <Logo source={logo} />
-      <ContainerView>
-        <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView style={{flex: 1, backgroundColor: '#333'}}>
+      <Container>
+        <Logo source={logo} />
+        <ContainerView>
           <ContainerItem>
             <ContainerForm>
               <InputField
@@ -102,9 +102,9 @@ const LoginScreen = (props) => {
             }}>
             Criar uma nova conta
           </HyperLink>
-        </KeyboardAwareScrollView>
-      </ContainerView>
-    </Container >
+        </ContainerView>
+      </Container >
+    </KeyboardAwareScrollView>
   )
 }
 

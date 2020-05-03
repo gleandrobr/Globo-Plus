@@ -41,10 +41,10 @@ const GlobalStyle = StyleSheet.create({
 const RegisterScreen = (props) => {
 
   return (
-    <Container>
-      <Logo source={logo} />
-      <ContainerView>
-        <KeyboardAwareScrollView>
+    <KeyboardAwareScrollView style={{flex: 1, backgroundColor: '#333'}}>
+      <Container>
+        <Logo source={logo} />
+        <ContainerView>
           <ContainerItem>
             <ContainerForm>
               <InputField
@@ -103,9 +103,9 @@ const RegisterScreen = (props) => {
             }}>
             Já possui uma conta?
           </HyperLink>
-        </KeyboardAwareScrollView>
-      </ContainerView>
-    </Container >
+        </ContainerView>
+      </Container >
+    </KeyboardAwareScrollView>
   )
 }
 
