@@ -18,12 +18,6 @@ class UserController {
     return result
   }
 
-  async list({ request }) {
-    let users = User.query().fetch()
-
-    return users
-  }
-
   async check_login({ response, auth }) {
     try {
       await auth.check()
@@ -34,6 +28,32 @@ class UserController {
     }
   }
 
+  async add_favorites({ request, response, auth }) {
+    const data = request.only(['favorites_choices'])
+
+    if(data['favorites_choices'] == undefined)
+      return { successfully: false }
+
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+    let final = {}
+    for(let i of data['favorites_choices']) {
+      final[i] = []
+    }
+
+    try {
+      user.preferences = final
+      user.save()
+    } catch(error) {
+      return { successfully: false }
+    }
+    response.send({ successfully: true })
+  }
 }
 
 module.exports = UserController
