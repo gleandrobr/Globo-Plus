@@ -2,7 +2,8 @@
 import {
   LOGIN_USER,
   REGISTER_USER,
-  CHECK_USER_TOKEN
+  CHECK_USER_TOKEN,
+  CLEAN_AUTHENTICATION
 } from './types'
 import { requests } from '../utils'
 
@@ -16,4 +17,8 @@ export const checkUserToken = (token) => {
   return requests.post('check_login', {}, {
     headers: { Authorization: `Bearer ${token}` }
   }, CHECK_USER_TOKEN)
+}
+
+export const cleanAuthentication = () => {
+  return { type: CLEAN_AUTHENTICATION, payload: null }
 }

@@ -20,7 +20,8 @@ import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 import {
   fetchUserFavorites,
   fetchCategoriesOptions,
-  setUserCategoriesPreferences
+  setUserCategoriesPreferences,
+  cleanPreferences
 } from '../../store/preferences/action'
 
 // local imports
@@ -42,7 +43,8 @@ const PreferenceScreen = (props) => {
       props.fetchUserFavorites(authenticationToken)
       props.fetchCategoriesOptions(authenticationToken)
     } else {
-      props.navigation.navigate('Login')
+      await props.cleanPreferences()
+      props.navigation.replace('Login')
     }
   }
 
@@ -88,18 +90,25 @@ const PreferenceScreen = (props) => {
       props.setUserCategoriesPreferences({ categories: selectedOptions }, authenticationToken)
       setSubmited(true)
     } else {
-      props.navigation.navigate('Login')
+      props.navigation.replace('Login')
+      await props.cleanPreferences()
     }
   }
 
   useEffect(() => {
-    if(submited) {
-      if(props.preferences.successfully)
-        props.navigation.navigate('Home')
+    const checkSuccessfully = async () => {
+      if(submited) {
+        if(props.preferences.successfully) {
+          await props.cleanPreferences()
+          props.navigation.replace('Home')
+        }
+      }
     }
+    checkSuccessfully()
   }, [props.preferences])
 
-  if(isLoading) {
+  const { preferences } = props
+  if(isLoading || preferences.favorites == undefined) {
     return (
       <Container>
         <ActivityIndicator size='large' color='#4623DE' />
@@ -107,7 +116,6 @@ const PreferenceScreen = (props) => {
     )
   }
 
-  const { preferences } = props
   return (
     <Container>
       <ScrollView>
@@ -164,6 +172,7 @@ export default connect(
   mapStateToProps, {
     fetchUserFavorites,
     fetchCategoriesOptions,
-    setUserCategoriesPreferences
+    setUserCategoriesPreferences,
+    cleanPreferences
   }
 )(PreferenceScreen)

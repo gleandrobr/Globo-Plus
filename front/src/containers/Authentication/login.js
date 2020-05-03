@@ -13,8 +13,14 @@ import { withFormik } from 'formik'
 import SecureStorage from 'react-native-secure-storage'
 
 // project imports
-import { loginUser } from '../../store/authentication/action'
 import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
+
+// redux
+import {
+  loginUser,
+  cleanAuthentication
+} from '../../store/authentication/action'
+import { checkIsUserFirstLogin } from '../../store/user/action'
 
 // local imports
 import {
@@ -48,12 +54,32 @@ const LoginScreen = (props) => {
         async function saveLogin() {
           await SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, authentication.token, SecureStorageConfig)
 
-          props.navigation.navigate('Home')
+          await props.checkIsUserFirstLogin(authentication.token)
         }
         saveLogin()
       }
     }
   }, [props.authentication])
+
+  useEffect(() => {
+    const callAPI = async () => {
+      let authenticationToken = await SecureStorage.getItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, SecureStorageConfig)
+
+      if(authenticationToken) {
+        if(props.user.is_first_login != undefined) {
+          if(props.user.is_first_login) {
+            props.navigation.replace('ChooseFavorites')
+            await props.cleanAuthentication()
+          } else {
+            props.navigation.replace('Home')
+            await props.cleanAuthentication()
+          }
+        }
+      }
+    }
+
+    callAPI()
+  }, [props.user])
 
   return (
     <Container>
@@ -112,14 +138,17 @@ const formikEnhancer = withFormik({
   }
 })(LoginScreen)
 
-const mapStateToProps = ({ authentication }) => {
+const mapStateToProps = ({ authentication, user }) => {
   return {
-    authentication
+    authentication,
+    user
   }
 };
 
 export default connect(
   mapStateToProps, {
-  loginUser
-}
+    loginUser,
+    checkIsUserFirstLogin,
+    cleanAuthentication
+  }
 )(formikEnhancer)

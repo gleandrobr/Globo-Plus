@@ -43,26 +43,26 @@ const RegisterScreen = (props) => {
       <ContainerView>
         <ContainerItem>
           <InputField
-            placeholder='Digite seu email'
+            placeholder='Digite seu login'
             value={props.values.username}
             onChangeText={text => props.setFieldValue('username', text)} />
-
-          <IconMaterialIcons
-            style={GlobalStyle.Icon}
-            name='email'
-            color='#fff'
-            size={25} />
-        </ContainerItem>
-        
-        <ContainerItem>
-          <InputField
-            placeholder='Digite seu login'
-            value={props.values.email}
-            onChangeText={text => props.setFieldValue('email', text)} />
 
           <IconFontAwesome5
             style={GlobalStyle.Icon}
             name='user'
+            color='#fff'
+            size={25} />
+        </ContainerItem>
+
+        <ContainerItem>
+          <InputField
+            placeholder='Digite seu email'
+            value={props.values.email}
+            onChangeText={text => props.setFieldValue('email', text)} />
+
+          <IconMaterialIcons
+            style={GlobalStyle.Icon}
+            name='email'
             color='#fff'
             size={25} />
         </ContainerItem>
@@ -82,12 +82,12 @@ const RegisterScreen = (props) => {
         </ContainerItem>
 
         <Button onPress={props.handleSubmit}>
-          <Text font={'20px'} >Conectar</Text>
+          <Text font={'20px'}>Conectar</Text>
         </Button>
 
         <HyperLink
           onPress={() => {
-            props.navigation.navigate('Login')
+            props.navigation.replace('Login')
           }}>
           Já possui uma conta?
         </HyperLink>
@@ -103,7 +103,7 @@ const formikEnhancer = withFormik({
     await props.registerUser(values)
       .then(async () => {
         // then register, ask to user login again
-        props.navigation.navigate('Login')
+        props.navigation.replace('Login')
       })
       .catch(() => {
         // TODO: error feedback

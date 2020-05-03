@@ -4,7 +4,8 @@ import {
   SET_USER_FAVORITES,
   FETCH_USER_FAVORITES,
   FETCH_CATEGORIES_OPTIONS,
-  SET_USER_CATEGORIES_PREFERENCES
+  SET_USER_CATEGORIES_PREFERENCES,
+  CLEAN_PREFERENCES
 } from './types'
 
 export const setUserFavorites = (data, token) => {
@@ -29,4 +30,8 @@ export const setUserCategoriesPreferences = (data, token) => {
   return requests.post('set_user_categories_preferences', data, {
     headers: { Authorization: `Bearer ${token}` }
   }, SET_USER_CATEGORIES_PREFERENCES)
+}
+
+export const cleanPreferences = () => {
+  return { type: CLEAN_PREFERENCES, payload: null }
 }

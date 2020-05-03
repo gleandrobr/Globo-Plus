@@ -27,9 +27,9 @@ const SplashScreen = (props) => {
 
     if(isCalledAPI) {
       if(authentication.valid)
-        props.navigation.navigate('Home')
+        props.navigation.replace('Home')
       else
-        props.navigation.navigate('Login')
+        props.navigation.replace('Login')
     }
 
     setTimeout(async () => {
@@ -39,7 +39,7 @@ const SplashScreen = (props) => {
         setCalledAPI(true)
         await props.checkUserToken(authenticationToken)
       } else
-        props.navigation.navigate('Login')
+        props.navigation.replace('Login')
     }, 4000)
   }, [props.authentication])
 

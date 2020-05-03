@@ -15,7 +15,10 @@ import SecureStorage from 'react-native-secure-storage'
 import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 
 // redux
-import { setUserFavorites } from '../../store/preferences/action'
+import {
+  setUserFavorites,
+  cleanPreferences
+} from '../../store/preferences/action'
 
 // local imports
 import {
@@ -65,10 +68,13 @@ const ChooseFavoritesScreen = (props) => {
   useEffect(() => {
     const { preferences } = props
 
-    if(preferences.successfully)
-      props.navigation.navigate('ChoosePreferences')
-    else  // error on request
-      return
+    const checkSuccessfully = async () => {
+      if(preferences.successfully) {
+        await props.cleanPreferences()
+        props.navigation.navigate('ChoosePreferences')
+      }
+    }
+    checkSuccessfully()
   }, [props.preferences])
 
   return (
@@ -134,6 +140,7 @@ const mapStateToProps = ({ preferences }) => {
 
 export default connect(
   mapStateToProps, {
-    setUserFavorites
+    setUserFavorites,
+    cleanPreferences
   }
 )(ChooseFavoritesScreen)

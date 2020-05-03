@@ -2,7 +2,8 @@ import {
   SET_USER_FAVORITES,
   FETCH_USER_FAVORITES,
   FETCH_CATEGORIES_OPTIONS,
-  SET_USER_CATEGORIES_PREFERENCES
+  SET_USER_CATEGORIES_PREFERENCES,
+  CLEAN_PREFERENCES
 } from './types'
 
 export default (state = {}, action) => {
@@ -15,6 +16,8 @@ export default (state = {}, action) => {
         ...state,
         ... action.payload
       }
+    case CLEAN_PREFERENCES:
+      return {}
     default:
       return state
   }
