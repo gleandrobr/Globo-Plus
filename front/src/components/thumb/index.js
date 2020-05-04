@@ -9,13 +9,17 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 // local imports
 import {
   Container,
+  PhotoContainer,
   NewsPhotos,
+  TitleContainer,
   Title,
   ContainerIcons,
+  Description,
+  AgeMin
 } from './style'
 import { View } from 'react-native'
 
-const NewsSession = ({ title, text, image, color, hate, type, like }) => {
+const NewsSession = ({ title, text, image, color, hate, type, like, marginTop, description, play, timeDuration, minAge }) => {
 
   const renderStars = () => {
     let elements = []
@@ -31,40 +35,76 @@ const NewsSession = ({ title, text, image, color, hate, type, like }) => {
     return elements
   }
 
+  let params = {}
+  if(marginTop != undefined)
+    params['top'] = marginTop
+
   return (
-    <Container>
-      <NewsPhotos source={image} />
+    <Container marginTop={marginTop}>
+      <PhotoContainer>
+        <NewsPhotos source={image} />
+
+        {
+          play && (
+            <AntDesignIcon name='playcircleo' size={70} style={{ position: 'absolute' }} color='#fff' />
+          )
+        }
+      </PhotoContainer>
       {
         type && (
           <Title color={color}>{title}</Title>
         )
       }
-      <Title>{text}</Title>
+      <TitleContainer>
+        <Title>{text}</Title>
+        {
+          timeDuration && (
+            <Description margin='2%' width='auto'>{timeDuration}</Description>
+          )
+        }
+      </TitleContainer>
       {
         hate && (
-          <View style={{ display: 'flex', flexDirection: 'row' }}>
+          <View style={{ display: 'flex', flexDirection: 'row', marginLeft: '2%' }}>
             {renderStars()}
+            {
+              minAge && (
+                <AgeMin>
+                  <Title color='white'>{minAge}</Title>
+                </AgeMin>
+              )
+            }
           </View>
         )
       }
+
+      {
+        description && (
+          <Description>{description}</Description>
+        )
+      }
+
       <ContainerIcons>
         <AntDesignIcon
           onPress={() => alert('compartilhou')}
           style={{ marginLeft: 15 }}
           name='sharealt'
-          size={35} />
+          color='#333333'
+          size={25} />
         <FontistoIcon
           onPress={() => alert('salvou')}
           style={{ marginLeft: 15 }}
           name='bookmark'
-          size={35} />
+          color='#333333'
+          size={25} />
         {
           like && (
             <IoniconsIcon
               onPress={() => alert('curtiu')}
               style={{ marginLeft: 15 }}
               name='ios-heart-empty'
-              size={35} />
+              color='#333333'
+              size={25} />
           )
         }
       </ContainerIcons>

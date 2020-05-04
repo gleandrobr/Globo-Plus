@@ -10,6 +10,7 @@ import RegisterScreen from './containers/Authentication/register'
 import MainScreen from './containers/Main'
 import ChooseFavoritesScreen from './containers/Choose-Favorites'
 import ChossePreferenceScreen from './containers/Choose-Favorites/preferences'
+import MovieDetail from './containers/Feed/movie-detail'
 
 const Stack = createStackNavigator()
 
@@ -37,6 +38,9 @@ const Routes = () => {
         <Stack.Screen
           name='ChoosePreferences'
           component={ChossePreferenceScreen} />
+        <Stack.Screen
+          name='MovieDetail'
+          component={MovieDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   )

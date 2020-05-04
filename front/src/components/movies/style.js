@@ -7,7 +7,8 @@ export const Container = styled.View`
   display: flex;
   height: 250px;
   width: ${width * 0.40}px;
-  margin-left: ${width * 0.05}px;
+  margin-left: ${(props) => props.left || width * 0.05 + 'px'};
+  margin-right: ${(props) => props.right || '0'};
 `
 export const Title = styled.Text`
   color: #000;
