@@ -1,7 +1,10 @@
 // react imports
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet } from 'react-native'
+import {
+  StyleSheet,
+  ActivityIndicator
+} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 //IconAntDesign
@@ -19,7 +22,9 @@ import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 // redux
 import {
   loginUser,
-  cleanAuthentication
+  cleanAuthentication,
+  failLogin,
+  loginLoading
 } from '../../store/authentication/action'
 import { checkIsUserFirstLogin } from '../../store/user/action'
 
@@ -70,6 +75,7 @@ const LoginScreen = (props) => {
 
       if(authenticationToken) {
         if(props.user.is_first_login != undefined) {
+          props.loginLoading(false)
           if(props.user.is_first_login) {
             props.navigation.replace('ChooseFavorites')
             await props.cleanAuthentication()
@@ -88,6 +94,20 @@ const LoginScreen = (props) => {
     <KeyboardAwareScrollView style={{flex: 1, backgroundColor: '#333'}}>
       <Container>
         <Logo source={logo} />
+
+        {
+          props.authentication.login_fail && (
+            <Text color='#ff3a24'>Verifique suas credenciais!</Text>
+          )
+        }
+
+        {
+          props.authentication.login_loading && (
+            <ActivityIndicator size="large" color="#4623DE" />
+          )
+        }
+
+
         <ContainerView>
           <ContainerItem>
             <ContainerForm>
@@ -138,11 +158,11 @@ const formikEnhancer = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),
 
   handleSubmit: async (values, { props }) => {
+    props.loginLoading(true)
     await props.loginUser(values)
       .catch(() => {
-        // TODO: Show error message when login fail
-        const { authentication } = props
-        console.log(authentication.message)
+        props.loginLoading(false)
+        props.failLogin()
       })
   }
 })(LoginScreen)
@@ -158,6 +178,8 @@ export default connect(
   mapStateToProps, {
     loginUser,
     checkIsUserFirstLogin,
-    cleanAuthentication
+    cleanAuthentication,
+    failLogin,
+    loginLoading
   }
 )(formikEnhancer)
