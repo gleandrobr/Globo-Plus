@@ -71,7 +71,7 @@ const ChooseFavoritesScreen = (props) => {
     const checkSuccessfully = async () => {
       if(preferences.successfully) {
         await props.cleanPreferences()
-        props.navigation.navigate('ChoosePreferences')
+        props.navigation.replace('ChoosePreferences')
       }
     }
     checkSuccessfully()

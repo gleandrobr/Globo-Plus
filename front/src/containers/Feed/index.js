@@ -83,7 +83,7 @@ const Feed = (props) => {
           type={true}
           title='Futebol'
           color='#2ED57B'
-          text='Acre news: Brasil ganha a copa do mundo de 2002 e se torna pentacampeão.' />
+          text='Brasil ganha a copa do mundo de 2002 e se torna pentacampeão.' />
 
         <NewsSession
           onPress={() => props.navigation.navigate('NewsDetail', {

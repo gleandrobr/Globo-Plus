@@ -1,5 +1,5 @@
 // react imports
-import React from 'react'
+import React, { useRef } from 'react'
 import { ScrollView, Image } from 'react-native'
 
 // local imports
@@ -14,9 +14,11 @@ import MovieSession from '../../components/movies'
 import Culinaria from '../../static/images/culinaria.jpg'
 
 const NewsDetails = (props) => {
+  const scroll = useRef(null)
+
   return (
     <Container>
-      <ScrollView>
+      <ScrollView ref={scroll}>
         <ThumbSession
           onPress={() => props.navigation.navigate('NewsDetail', {
             text: 'O Brazil ta em comemoração!!!',
@@ -27,7 +29,6 @@ const NewsDetails = (props) => {
           like={false}
           type={true}
           hate={true}
-          // color='#2ED57B'
           marginTop='0px'
           text={props.route.params.text} />
         <ContainerNews>
@@ -50,10 +51,13 @@ const NewsDetails = (props) => {
             top='5%'
             color='#000'>Noticias relacionadas</Text>
           <ThumbSession
-            onPress={() => props.navigation.navigate('NewsDetail', {
-              title: 'Receitas & Cia.',
-              image: require('../../static/images/receita.jpg'),
-            })}
+            onPress={() => {
+              props.navigation.navigate('NewsDetail', {
+                title: 'Receitas & Cia.',
+                image: require('../../static/images/receita.jpg'),
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/receita.jpg')}
             like={false}
             type={true}
@@ -63,10 +67,13 @@ const NewsDetails = (props) => {
             text='Ana maria braga cria livro de receitas para pessoas de todas as idades' />
 
           <ThumbSession
-            onPress={() => props.navigation.navigate('NewsDetail', {
-              title: 'Receitas & Cia.',
-              image: require('../../static/images/bolo.jpg'),
-            })}
+            onPress={() => {
+              props.navigation.navigate('NewsDetail', {
+                title: 'Receitas & Cia.',
+                image: require('../../static/images/bolo.jpg'),
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/bolo.jpg')}
             like={false}
             type={true}

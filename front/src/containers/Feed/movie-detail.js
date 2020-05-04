@@ -1,5 +1,5 @@
 // react imports
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import { ScrollView } from 'react-native'
 
@@ -14,9 +14,11 @@ import {
 } from './style'
 
 const MovieDetail = (props) => {
+  const scroll = useRef(null)
+
   return (
     <>
-      <ScrollView>
+      <ScrollView ref={scroll}>
         <ThumbSession
           image={props.route.params.image}
           like={false}
@@ -39,24 +41,30 @@ const MovieDetail = (props) => {
 
         <ContainerMovies>
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Velozes e furiosos 2',
-              image: require('../../static/images/Velozes-furiosos-2.jpg'),
-              time: '2 horas e 40 min',
-              minAge: 12,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Velozes e furiosos 2',
+                image: require('../../static/images/Velozes-furiosos-2.jpg'),
+                time: '2 horas e 40 min',
+                minAge: 12,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/Velozes-furiosos-2.jpg')}
             title='Velozes e furiosos 2'
             left='auto'
             right='auto' />
 
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Duro de matar',
-              image: require('../../static/images/duro.jpg'),
-              time: '2 horas e 10 min',
-              minAge: 16,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Duro de matar',
+                image: require('../../static/images/duro.jpg'),
+                time: '2 horas e 10 min',
+                minAge: 16,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/duro.jpg')}
             title='Duro de matar'
             left='auto'
@@ -65,24 +73,30 @@ const MovieDetail = (props) => {
 
         <ContainerMovies>
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Pixels',
-              image: require('../../static/images/pixels.jpg'),
-              time: '1 horas e 40 min',
-              minAge: 9,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Pixels',
+                image: require('../../static/images/pixels.jpg'),
+                time: '1 horas e 40 min',
+                minAge: 9,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/pixels.jpg')}
             title='Pixels'
             left='auto'
             right='auto' />
 
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Velozes e furiosos 8',
-              image: require('../../static/images/velozes.jpg'),
-              time: '2 horas e 50 min',
-              minAge: 16,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Velozes e furiosos 8',
+                image: require('../../static/images/velozes.jpg'),
+                time: '2 horas e 50 min',
+                minAge: 16,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/velozes.jpg')}
             title='Velozes e furiosos 8'
             left='auto'
@@ -98,24 +112,30 @@ const MovieDetail = (props) => {
 
         <ContainerMovies>
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'A culpa é da estrelas',
-              image: require('../../static/images/culpa.jpg'),
-              time: '2 horas e 30 min',
-              minAge: 16,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'A culpa é da estrelas',
+                image: require('../../static/images/culpa.jpg'),
+                time: '2 horas e 30 min',
+                minAge: 16,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/culpa.jpg')}
             title='A culpa é da estrelas'
             left='auto'
             right='auto' />
 
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Vida à deriva',
-              image: require('../../static/images/vida.jpg'),
-              time: '2 horas e 50 min',
-              minAge: 18,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Vida à deriva',
+                image: require('../../static/images/vida.jpg'),
+                time: '2 horas e 50 min',
+                minAge: 18,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/vida.jpg')}
             title='Vida à deriva'
             left='auto'
@@ -131,24 +151,30 @@ const MovieDetail = (props) => {
 
         <ContainerMovies>
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Jogador nº1',
-              image: require('../../static/images/carro.jpg'),
-              time: '2 horas e 20 min',
-              minAge: 9,
-            })}
-            image={require('../../static/images/carro.jpg')}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Jogador nº1',
+                image: require('../../static/images/jogador.png'),
+                time: '2 horas e 20 min',
+                minAge: 9,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
+            image={require('../../static/images/jogador.png')}
             title='Jogador nº1'
             left='auto'
             right='auto' />
 
           <MovieSession
-            onPress={() => props.navigation.navigate('MovieDetail', {
-              title: 'Homem aranha no aranhaverso',
-              image: require('../../static/images/spider.jpg'),
-              time: '2 horas e 30 min',
-              minAge: 9,
-            })}
+            onPress={() => {
+              props.navigation.navigate('MovieDetail', {
+                title: 'Homem aranha no aranhaverso',
+                image: require('../../static/images/spider.jpg'),
+                time: '2 horas e 30 min',
+                minAge: 9,
+              })
+              scroll.current.scrollTo({x: 0, y: 0})
+            }}
             image={require('../../static/images/spider.jpg')}
             title='Homem aranha no aranhaverso'
             left='auto'
@@ -181,7 +207,7 @@ const MovieDetail = (props) => {
           hate={true}
           title='Tecnologia'
           color='#0385CE'
-          text='Razer anucia PC Ultra mega boladão' />
+          text='Razer anucia PC Ultra mega' />
 
 
         <ThumbSession
@@ -196,7 +222,7 @@ const MovieDetail = (props) => {
           hate={true}
           title='Tecnologia'
           color='#B59F33'
-          text='Razer anucia PC Ultra mega boladão' />
+          text='Aprenda a fazer pratos dos seu sonhos' />
       </ScrollView>
     </>
   )
