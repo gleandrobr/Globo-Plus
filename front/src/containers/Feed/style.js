@@ -17,7 +17,6 @@ export const ImageFavorite = styled.Image`
 `
 export const ContainerFavorite = styled.View`
   height: 200px;
-  background: green;
 `
 export const ContainerText = styled.View`
   margin-top: auto;
