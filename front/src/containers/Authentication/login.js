@@ -1,7 +1,10 @@
 // react imports
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet } from 'react-native'
+import {
+  StyleSheet,
+  ActivityIndicator
+} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 //IconAntDesign
@@ -20,7 +23,8 @@ import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 import {
   loginUser,
   cleanAuthentication,
-  failLogin
+  failLogin,
+  loginLoading
 } from '../../store/authentication/action'
 import { checkIsUserFirstLogin } from '../../store/user/action'
 
@@ -71,6 +75,7 @@ const LoginScreen = (props) => {
 
       if(authenticationToken) {
         if(props.user.is_first_login != undefined) {
+          props.loginLoading(false)
           if(props.user.is_first_login) {
             props.navigation.replace('ChooseFavorites')
             await props.cleanAuthentication()
@@ -95,6 +100,13 @@ const LoginScreen = (props) => {
             <Text color='#ff3a24'>Verifique suas credenciais!</Text>
           )
         }
+
+        {
+          props.authentication.login_loading && (
+            <ActivityIndicator size="large" color="#4623DE" />
+          )
+        }
+
 
         <ContainerView>
           <ContainerItem>
@@ -146,8 +158,10 @@ const formikEnhancer = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),
 
   handleSubmit: async (values, { props }) => {
+    props.loginLoading(true)
     await props.loginUser(values)
       .catch(() => {
+        props.loginLoading(false)
         props.failLogin()
       })
   }
@@ -165,6 +179,7 @@ export default connect(
     loginUser,
     checkIsUserFirstLogin,
     cleanAuthentication,
-    failLogin
+    failLogin,
+    loginLoading
   }
 )(formikEnhancer)

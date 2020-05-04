@@ -1,7 +1,10 @@
 // react imports
 import React from 'react'
 import { connect } from 'react-redux'
-import { StyleSheet } from 'react-native'
+import {
+  StyleSheet,
+  ActivityIndicator
+} from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 //IconAntDesign
@@ -15,7 +18,8 @@ import { withFormik } from 'formik'
 // project imports
 import {
   registerUser,
-  failRegister
+  failRegister,
+  registerLoading
 } from '../../store/authentication/action'
 
 // local imports
@@ -50,6 +54,12 @@ const RegisterScreen = (props) => {
         {
           props.authentication.register_fail && (
             <Text color='#ff3a24'>Erro ao realizar o cadastro!</Text>
+          )
+        }
+
+        {
+          props.authentication.register_loading && (
+            <ActivityIndicator size="large" color="#4623DE" />
           )
         }
 
@@ -115,12 +125,14 @@ const formikEnhancer = withFormik({
   mapPropsToValues: () => ({ email: '', password: '', username: '' }),
 
   handleSubmit: async (values, { props }) => {
+    props.registerLoading(true)
     await props.registerUser(values)
       .then(async () => {
         // then register, ask to user login again
         props.navigation.replace('Login')
       })
       .catch(() => {
+        props.registerLoading(false)
         props.failRegister()
       })
   }
@@ -135,6 +147,7 @@ const mapStateToProps = ({ authentication }) => {
 export default connect(
   mapStateToProps, {
   registerUser,
-  failRegister
+  failRegister,
+  registerLoading
 }
 )(formikEnhancer)
