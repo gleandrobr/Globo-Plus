@@ -20,7 +20,11 @@ import Receita from '../../static/images/receita.jpg'
 
 const Feed = () => {
   const movies = [
-    {name: 'Procurando o nemo', image: require('../../static/images/procurando.jpg')}
+    { name: 'Procurando o Gstavo', image: require('../../static/images/procurando.jpg') },
+    { name: 'Duro de matar', image: require('../../static/images/duro.jpg') },
+    { name: 'Velozes e Furiosos', image: require('../../static/images/Velozes-furiosos-2.jpg') },
+    { name: 'Pixels', image: require('../../static/images/pixels.jpg') },
+    { name: 'Jogado nº1', image: require('../../static/images/jogador.jpg') }
   ]
 
   return (

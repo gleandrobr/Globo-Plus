@@ -6,7 +6,6 @@ import { ScrollView } from 'react-native'
 // project imports
 import MovieSession from '../../components/movies'
 import ThumbSession from '../../components/thumb'
-import Receita from '../../static/images/receita.jpg'
 
 // local imports
 import {
