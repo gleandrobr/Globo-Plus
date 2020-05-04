@@ -1,5 +1,5 @@
 // react imports
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import {
   StyleSheet,
@@ -69,19 +69,22 @@ const LoginScreen = (props) => {
     }
   }, [props.authentication])
 
+  const [openedScreen, setOpenedScreen] = useState(false)
   useEffect(() => {
     const callAPI = async () => {
       let authenticationToken = await SecureStorage.getItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, SecureStorageConfig)
 
       if(authenticationToken) {
-        if(props.user.is_first_login != undefined) {
+        if(props.user.is_first_login != undefined && !openedScreen) {
           props.loginLoading(false)
           if(props.user.is_first_login) {
+            setOpenedScreen(true)
+            await props.cleanAuthentication()
             props.navigation.replace('ChooseFavorites')
-            await props.cleanAuthentication()
           } else {
-            props.navigation.replace('Home')
+            setOpenedScreen(true)
             await props.cleanAuthentication()
+            props.navigation.replace('Home')
           }
         }
       }

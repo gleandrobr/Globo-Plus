@@ -52,8 +52,8 @@ const ProfileScreen = (props) => {
         <ProfileImage
           source={require('../../static/images/person.png')} />
 
-        <Title>Profile name</Title>
-        <ProfileInfoContent>
+        {/* <Title>Profile name</Title> */}
+        {/* <ProfileInfoContent>
           <ProfileInfoItem>
             <SubTitle>Seguidores</SubTitle>
             <SubTitle>70</SubTitle>
@@ -62,7 +62,7 @@ const ProfileScreen = (props) => {
             <SubTitle>Seguindo</SubTitle>
             <SubTitle>150</SubTitle>
           </ProfileInfoItem>
-        </ProfileInfoContent>
+        </ProfileInfoContent> */}
 
         <View style={{ marginTop: '5%' }}>
           <ListItem>
