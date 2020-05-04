@@ -14,7 +14,7 @@ import {
 
 // prooject imports
 import MovieSession from '../../components/movies'
-import NewsSession from '../../components/news'
+import NewsSession from '../../components/thumb'
 import Receita from '../../static/images/receita.jpg'
 
 
