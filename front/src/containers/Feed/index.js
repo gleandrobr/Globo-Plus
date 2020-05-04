@@ -19,7 +19,9 @@ import Receita from '../../static/images/receita.jpg'
 
 
 const Feed = () => {
-  const movies = ['Procurando Gustavo', 'Duro de matar', 'Procurando Nemo', 'Pintinho', 'Procurando Gustavo', 'Procurando Gustavo', 'Procurando Gustavo']
+  const movies = [
+    {name: 'Procurando o nemo', image: '../../static/images/procurando.jpg'}
+  ]
 
   return (
     <Container>
@@ -45,8 +47,8 @@ const Feed = () => {
               movies.map((item, index) => (
                 <MovieSession
                   key={index}
-                  image={require('../../static/images/procurando.jpg')}
-                  title={item} />
+                  image={require(item)}
+                  title={item.name} />
               ))
             }
 
@@ -74,7 +76,7 @@ const Feed = () => {
           like={true}
           type={true}
           hate={false}
-          title='Tecnologia'
+          title='Receitas'
           color='#B59F33'
           text='Receitas & cia' />
 
