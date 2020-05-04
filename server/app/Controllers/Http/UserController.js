@@ -2,6 +2,8 @@
 
 const User = use('App/Models/User')
 
+const { CATEGORIES, CATEGORIES_INFO } = require('../../constants')
+
 class UserController {
 
   async register({ request }) {
@@ -18,10 +20,14 @@ class UserController {
     return result
   }
 
-  async list({ request }) {
-    let users = User.query().fetch()
-
-    return users
+  async is_first_login({ request, auth }) {
+    let user = null
+    try {
+      user = await auth.getUser()
+      return { is_first_login: user.first_login }
+    } catch(error) {
+      return { invalid_token: true }
+    }
   }
 
   async check_login({ response, auth }) {
@@ -34,6 +40,87 @@ class UserController {
     }
   }
 
+  async add_favorites({ request, response, auth }) {
+    const data = request.only(['favorites_choices'])
+
+    if(data['favorites_choices'] == undefined)
+      return { successfully: false }
+
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+    let final = {}
+    for(let i of data['favorites_choices']) {
+      final[i] = []
+    }
+
+    try {
+      user.preferences = final
+      user.save()
+    } catch(error) {
+      return { successfully: false }
+    }
+    response.send({ successfully: true })
+  }
+
+  async get_favorites({ request, response, auth }) {
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+    let final = {}
+    for(let preference of Object.keys(user.preferences)) {
+      final[preference] = CATEGORIES_INFO[preference]
+    }
+
+    response.send({ favorites: final })
+  }
+
+  async get_categories_options({ request, response, auth }) {
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+
+    let preferences = Object.keys(user.preferences)
+    let final = {}
+
+    for(let preference of preferences) {
+      final[preference] = CATEGORIES[preference]
+    }
+
+    response.send({results: final})
+  }
+
+  async set_user_categories_preferences({ request, response, auth }) {
+    let data = request.only(['categories'])
+
+    let user = null
+    try {
+      user = await auth.getUser()
+    } catch(error) {
+      return { invalid_token: true }
+    }
+
+    try {
+      user.preferences = data['categories']
+      user.save()
+    } catch(error) {
+      return { successfully: false }
+    }
+
+    response.send({ successfully: true })
+  }
 }
 
 module.exports = UserController

@@ -1,12 +1,14 @@
 // react imports
 import React from 'react'
 import { connect } from 'react-redux'
+import { StyleSheet } from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-import {
-  Button,
-  View,
-  Text
-} from 'react-native'
+//IconAntDesign
+import IconMaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import IconFontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import IconFontisto from 'react-native-vector-icons/Fontisto'
+
 
 // third imports
 import { withFormik } from 'formik'
@@ -18,43 +20,86 @@ import {
   Container,
   Logo,
   InputField,
-  HyperLink
-} from './style'
+  HyperLink,
+  ContainerView,
+  ContainerItem,
+  Button,
+  Text,
+  ContainerForm
+} from './styles'
+import logo from '../../assets/logo.png'
+
+//Global Styles
+const GlobalStyle = StyleSheet.create({
+  Icon: {
+    position: "absolute",
+    right: 1,
+    bottom: 0,
+  }
+})
 
 const RegisterScreen = (props) => {
 
   return (
-    <Container>
-      <Logo>Globo Plus</Logo>
+    <KeyboardAwareScrollView style={{flex: 1, backgroundColor: '#333'}}>
+      <Container>
+        <Logo source={logo} />
+        <ContainerView>
+          <ContainerItem>
+            <InputField
+              placeholder='Digite seu login'
+              value={props.values.username}
+              onChangeText={text => props.setFieldValue('username', text)} />
 
-      <View>
-        <Text>Nome de usuário</Text>
-        <InputField
-          value={props.values.username}
-          onChangeText={text => props.setFieldValue('username', text)} />
+            <IconFontAwesome5
+              style={GlobalStyle.Icon}
+              name='user'
+              color='#fff'
+              size={25} />
+          </ContainerItem>
 
-        <Text>Email</Text>
-        <InputField
-          value={props.values.email}
-          onChangeText={text => props.setFieldValue('email', text)} />
+          <ContainerItem>
+            <InputField
+              placeholder='Digite seu email'
+              value={props.values.email}
+              onChangeText={text => props.setFieldValue('email', text)} />
 
-        <Text>Senha</Text>
-        <InputField
-          value={props.values.password}
-          onChangeText={text => props.setFieldValue('password', text)} />
+            <IconMaterialIcons
+              style={GlobalStyle.Icon}
+              name='email'
+              color='#fff'
+              size={25} />
+          </ContainerItem>
 
-        <Button
-          onPress={props.handleSubmit}
-          title='Cadastrar' />
+          <ContainerItem>
+            <InputField
+              placeholder='Digite sua senha'
+              value={props.values.password}
+              secureTextEntry
+              onChangeText={text => props.setFieldValue('password', text)} />
 
-        <HyperLink
-          onPress={() => {
-            props.navigation.navigate('Login')
-          }}>
-          Já possui uma conta?
-        </HyperLink>
-      </View>
-    </Container>
+            <IconFontisto
+              style={GlobalStyle.Icon}
+              name='key'
+              color='#fff'
+              size={25} />
+          </ContainerItem>
+
+          <Button
+            onPress={props.handleSubmit}
+            background={'#1976D2'}>
+            <Text font={'20px'} >Conectar</Text>
+          </Button>
+
+          <HyperLink
+            onPress={() => {
+              props.navigation.replace('Login')
+            }}>
+            Já possui uma conta?
+          </HyperLink>
+        </ContainerView>
+      </Container>
+    </KeyboardAwareScrollView>
   )
 }
 
@@ -65,7 +110,7 @@ const formikEnhancer = withFormik({
     await props.registerUser(values)
       .then(async () => {
         // then register, ask to user login again
-        props.navigation.navigate('Login')
+        props.navigation.replace('Login')
       })
       .catch(() => {
         // TODO: error feedback
@@ -81,6 +126,6 @@ const mapStateToProps = ({ authentication }) => {
 
 export default connect(
   mapStateToProps, {
-    registerUser
-  }
+  registerUser
+}
 )(formikEnhancer)

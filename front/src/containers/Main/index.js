@@ -10,12 +10,8 @@ import Octicons from 'react-native-vector-icons/Octicons'
 
 // project imports
 import ProfileScreen from '../Profile'
-const Feed = () => (
-  <Text>Feed</Text>
-)
-const Notifications = () => (
-  <Text>Notifications</Text>
-)
+import NotificationScreen from '../Notification'
+
 const Profile = () => (
   <Text>Profile</Text>
 )
@@ -38,7 +34,7 @@ function MainScreen() {
         }} />
       <Tab.Screen
         name='Home'
-        component={Notifications}
+        component={Profile}
         options={{
           tabBarLabel: 'Inicio',
           tabBarIcon: ({ color }) => (
@@ -46,8 +42,8 @@ function MainScreen() {
           ),
         }} />
       <Tab.Screen
-        name='Notifications'
-        component={Profile}
+        name='Notification'
+        component={NotificationScreen}
         options={{
           tabBarLabel: 'Notificações',
           tabBarIcon: ({ color }) => (

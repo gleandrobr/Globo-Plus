@@ -43,7 +43,7 @@ const ProfileScreen = (props) => {
   const logout = () => {
     SecureStorage.setItem(STORAGE_KEYS.AUTHENTICATION_TOKEN, '', SecureStorageConfig)
 
-    props.navigation.navigate('Login')
+    props.navigation.replace('Login')
   }
 
   return (
