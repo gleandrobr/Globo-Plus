@@ -17,7 +17,6 @@ export const ImageFavorite = styled.Image`
 `
 export const ContainerFavorite = styled.View`
   height: 200px;
-  background: green;
 `
 export const ContainerText = styled.View`
   margin-top: auto;
@@ -30,4 +29,10 @@ export const ContainerMovies = styled.View`
   width: 100%;
   display: flex;
   flex-direction: row;
+`
+export const ContainerNews = styled.View`
+  width: 95%;
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
 `
