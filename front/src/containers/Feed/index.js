@@ -20,7 +20,7 @@ import Receita from '../../static/images/receita.jpg'
 
 const Feed = () => {
   const movies = [
-    {name: 'Procurando o nemo', image: '../../static/images/procurando.jpg'}
+    {name: 'Procurando o nemo', image: require('../../static/images/procurando.jpg')}
   ]
 
   return (
@@ -47,7 +47,7 @@ const Feed = () => {
               movies.map((item, index) => (
                 <MovieSession
                   key={index}
-                  image={require(item)}
+                  image={item.image}
                   title={item.name} />
               ))
             }
@@ -106,8 +106,8 @@ const Feed = () => {
               movies.map((item, index) => (
                 <MovieSession
                   key={index}
-                  image={require('../../static/images/procurando.jpg')}
-                  title={item} />
+                  image={item.image}
+                  title={item.name} />
               ))
             }
           </ScrollView>
