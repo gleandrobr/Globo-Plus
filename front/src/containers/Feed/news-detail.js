@@ -13,18 +13,23 @@ import ThumbSession from '../../components/thumb'
 import MovieSession from '../../components/movies'
 import Culinaria from '../../static/images/culinaria.jpg'
 
-const NewsDetails = () => {
+const NewsDetails = (props) => {
   return (
     <Container>
       <ScrollView>
         <ThumbSession
-          image={require('../../static/images/receita.jpg')}
+          onPress={() => props.navigation.navigate('NewsDetail', {
+            text: 'O Brazil ta em comemoração!!!',
+            image: require('../../static/images/copaAcre.jpg'),
+          })}
+          image={props.route.params.image}
+          title={props.route.params.title}
           like={false}
           type={true}
           hate={true}
-          color='#2ED57B'
+          // color='#2ED57B'
           marginTop='0px'
-          text='Ana maria braga cria livro de receitas para pessoas de todas as idades' />
+          text={props.route.params.text} />
         <ContainerNews>
           <Text
             textAlign='justify'
@@ -45,22 +50,30 @@ const NewsDetails = () => {
             top='5%'
             color='#000'>Noticias relacionadas</Text>
           <ThumbSession
+            onPress={() => props.navigation.navigate('NewsDetail', {
+              title: 'Receitas & Cia.',
+              image: require('../../static/images/receita.jpg'),
+            })}
             image={require('../../static/images/receita.jpg')}
             like={false}
             type={true}
             hate={true}
-            color='#2ED57B'
+            color='#B59F33'
             marginTop='5%'
             text='Ana maria braga cria livro de receitas para pessoas de todas as idades' />
 
           <ThumbSession
-            image={require('../../static/images/receita.jpg')}
+            onPress={() => props.navigation.navigate('NewsDetail', {
+              title: 'Receitas & Cia.',
+              image: require('../../static/images/bolo.jpg'),
+            })}
+            image={require('../../static/images/bolo.jpg')}
             like={false}
             type={true}
             hate={true}
-            color='#2ED57B'
+            color='#B59F33'
             marginTop='5%'
-            text='Ana maria braga cria livro de receitas para pessoas de todas as idades' />
+            text='Aprenda a fazer um bolo de cenoura muito delicioso' />
 
           {/* Ta afim de assistir um filme ? */}
           <Text
@@ -76,17 +89,29 @@ const NewsDetails = () => {
             textAlign='left'
             left='2%'
             top='2%'>Separamos alguns que são a sua cara</Text>
-          
+
           <ContainerMovies>
             <MovieSession
-              image={require('../../static/images/procurando.jpg')}
-              title='Procurando o gustavo'
+              onPress={() => props.navigation.navigate('MovieDetail', {
+                title: 'Pixels',
+                image: require('../../static/images/pixels.jpg'),
+                time: '1 horas e 40 min',
+                minAge: 9,
+              })}
+              image={require('../../static/images/pixels.jpg')}
+              title='Pixels'
               left='auto'
               right='auto' />
 
             <MovieSession
+              onPress={() => props.navigation.navigate('MovieDetail', {
+                title: 'Duro de matar',
+                image: require('../../static/images/duro.jpg'),
+                time: '2 horas e 10 min',
+                minAge: 16,
+              })}
               image={require('../../static/images/duro.jpg')}
-              title='Procurando o gustavo'
+              title='Duro de matar'
               left='auto'
               right='auto' />
           </ContainerMovies>

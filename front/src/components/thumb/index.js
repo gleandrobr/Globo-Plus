@@ -19,7 +19,7 @@ import {
 } from './style'
 import { View } from 'react-native'
 
-const NewsSession = ({ title, text, image, color, hate, type, like, marginTop, description, play, timeDuration, minAge }) => {
+const NewsSession = ({ onPress, title, text, image, color, hate, type, like, marginTop, description, play, timeDuration, minAge }) => {
 
   const renderStars = () => {
     let elements = []
@@ -36,11 +36,24 @@ const NewsSession = ({ title, text, image, color, hate, type, like, marginTop, d
   }
 
   let params = {}
-  if(marginTop != undefined)
+  if (marginTop != undefined)
     params['top'] = marginTop
 
+
+  let colorAge = '#000'
+  if (minAge < 10)
+    colorAge = '#178031'
+  else if (minAge < 12)
+    colorAge = '#1435a3'
+  else if (minAge < 14)
+    colorAge = '#b5c716'
+  else if (minAge < 16)
+    colorAge = '#d18411'
+  else if (minAge < 18)
+    colorAge = '#d41b0b'
+
   return (
-    <Container marginTop={marginTop}>
+    <Container marginTop={marginTop} onPress={onPress}>
       <PhotoContainer>
         <NewsPhotos source={image} />
 
@@ -69,8 +82,16 @@ const NewsSession = ({ title, text, image, color, hate, type, like, marginTop, d
             {renderStars()}
             {
               minAge && (
-                <AgeMin>
-                  <Title color='white'>{minAge}</Title>
+                <AgeMin color={colorAge} width={(minAge < 10) ? '60px' : '30px'}>
+                  {
+                    minAge >= 10 ? (
+                      <Title color='white'>{minAge}</Title>
+                    ) : (
+                        <Title color='white'>Livre</Title>
+                      )
+
+                  }
+
                 </AgeMin>
               )
             }
