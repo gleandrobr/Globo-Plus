@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const  Container = styled.View`
+export const Container = styled.TouchableOpacity`
   display: flex;
   flex-direction: column;
   margin-top: ${(props) => props.marginTop || '5%'};
@@ -35,8 +35,8 @@ export const Description = styled.Text`
   color: #575757;
 `
 export const AgeMin = styled.View`
- background-color: #cb1e1e;
- width: 30px;
+ background-color: ${(props => props.color || "#24c74d")};
+ width: ${(props) => props.width || '30px'};
  height: 30px;
  justify-content: center;
  align-items: center;

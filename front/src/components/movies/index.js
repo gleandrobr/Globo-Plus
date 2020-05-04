@@ -8,9 +8,9 @@ import {
   ImageMovie,
 } from './style'
 
-const MovieSession = ({ image, title, left, right }) => {
+const MovieSession = ({ image, title, left, right, onPress }) => {
   return (
-    <Container left={left} right={right}>
+    <Container left={left} right={right} onPress={onPress}>
       <ImageMovie source={image} />
       <Title>{title}</Title>
     </Container>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://192.168.00.109:3333/'
+axios.defaults.baseURL = 'http://172.31.255.106:3333/'
 
 export const requests = {
   get(url, config, type) {

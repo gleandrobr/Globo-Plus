@@ -41,7 +41,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -54,7 +54,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -67,7 +67,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -80,7 +80,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -93,7 +93,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -106,7 +106,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -119,7 +119,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -132,7 +132,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -145,7 +145,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -158,7 +158,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
 
@@ -171,7 +171,7 @@ const NotificationScreen = () => {
               name='bell'
               color='#4623DE' />
           </ContainerView>
-          <Text color={'#333'} size={'18px'}>Compartilhou sua publicação</Text>
+          <Text color={'#333'} size={'18px'}>Reagiu ao seu comentário</Text>
           <Reminder />
         </ListItem>
       </ScrollView>
