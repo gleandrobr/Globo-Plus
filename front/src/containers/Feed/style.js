@@ -30,3 +30,9 @@ export const ContainerMovies = styled.View`
   display: flex;
   flex-direction: row;
 `
+export const ContainerNews = styled.View`
+  width: 95%;
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+`
