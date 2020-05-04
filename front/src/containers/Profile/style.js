@@ -5,6 +5,11 @@ export const GlobalStyle = StyleSheet.create({
   darkThemeSwitch: {
     marginLeft: 'auto',
     transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }]
+  },
+  settingsIcon: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '10%'
   }
 })
 
