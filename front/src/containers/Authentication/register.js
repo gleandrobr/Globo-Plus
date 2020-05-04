@@ -13,7 +13,10 @@ import IconFontisto from 'react-native-vector-icons/Fontisto'
 // third imports
 import { withFormik } from 'formik'
 // project imports
-import { registerUser } from '../../store/authentication/action'
+import {
+  registerUser,
+  failRegister
+} from '../../store/authentication/action'
 
 // local imports
 import {
@@ -24,8 +27,7 @@ import {
   ContainerView,
   ContainerItem,
   Button,
-  Text,
-  ContainerForm
+  Text
 } from './styles'
 import logo from '../../assets/logo.png'
 
@@ -34,7 +36,7 @@ const GlobalStyle = StyleSheet.create({
   Icon: {
     position: "absolute",
     right: 1,
-    bottom: 0,
+    bottom: 25,
   }
 })
 
@@ -44,6 +46,13 @@ const RegisterScreen = (props) => {
     <KeyboardAwareScrollView style={{flex: 1, backgroundColor: '#333'}}>
       <Container>
         <Logo source={logo} />
+
+        {
+          props.authentication.register_fail && (
+            <Text color='#ff3a24'>Erro ao realizar o cadastro!</Text>
+          )
+        }
+
         <ContainerView>
           <ContainerItem>
             <InputField
@@ -86,8 +95,7 @@ const RegisterScreen = (props) => {
           </ContainerItem>
 
           <Button
-            onPress={props.handleSubmit}
-            background={'#1976D2'}>
+            onPress={props.handleSubmit}>
             <Text font={'20px'} >Conectar</Text>
           </Button>
 
@@ -113,7 +121,7 @@ const formikEnhancer = withFormik({
         props.navigation.replace('Login')
       })
       .catch(() => {
-        // TODO: error feedback
+        props.failRegister()
       })
   }
 })(RegisterScreen)
@@ -126,6 +134,7 @@ const mapStateToProps = ({ authentication }) => {
 
 export default connect(
   mapStateToProps, {
-  registerUser
+  registerUser,
+  failRegister
 }
 )(formikEnhancer)

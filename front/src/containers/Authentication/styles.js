@@ -19,6 +19,8 @@ export const ContainerForm = styled.View`
 export const ContainerItem = styled.View`
   flex-direction: row;
   align-items: center;
+  width: 250px;
+  margin: auto;
 `
 
 export const Logo = styled.Image`
@@ -50,7 +52,7 @@ export const Button = styled.TouchableOpacity`
   width: 150px;
   height: 40px;
   padding: 1%;
-  background: ${(props) => props.background || '#4CAF50'};
+  background: ${(props) => props.background || '#4623DE'};
   align-items: center;
   margin: 0 auto;
   border: none;

@@ -19,7 +19,8 @@ import { SecureStorageConfig, STORAGE_KEYS } from '../../utils'
 // redux
 import {
   loginUser,
-  cleanAuthentication
+  cleanAuthentication,
+  failLogin
 } from '../../store/authentication/action'
 import { checkIsUserFirstLogin } from '../../store/user/action'
 
@@ -88,6 +89,13 @@ const LoginScreen = (props) => {
     <KeyboardAwareScrollView style={{flex: 1, backgroundColor: '#333'}}>
       <Container>
         <Logo source={logo} />
+
+        {
+          props.authentication.login_fail && (
+            <Text color='#ff3a24'>Verifique suas credenciais!</Text>
+          )
+        }
+
         <ContainerView>
           <ContainerItem>
             <ContainerForm>
@@ -140,9 +148,7 @@ const formikEnhancer = withFormik({
   handleSubmit: async (values, { props }) => {
     await props.loginUser(values)
       .catch(() => {
-        // TODO: Show error message when login fail
-        const { authentication } = props
-        console.log(authentication.message)
+        props.failLogin()
       })
   }
 })(LoginScreen)
@@ -158,6 +164,7 @@ export default connect(
   mapStateToProps, {
     loginUser,
     checkIsUserFirstLogin,
-    cleanAuthentication
+    cleanAuthentication,
+    failLogin
   }
 )(formikEnhancer)

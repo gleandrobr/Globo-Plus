@@ -3,7 +3,9 @@ import {
   LOGIN_USER,
   REGISTER_USER,
   CHECK_USER_TOKEN,
-  CLEAN_AUTHENTICATION
+  CLEAN_AUTHENTICATION,
+  FAIL_LOGIN,
+  FAIL_REGISTER
 } from './types'
 
 const initial_state = {}
@@ -13,6 +15,8 @@ export default (state = initial_state, action) => {
     case LOGIN_USER:
     case REGISTER_USER:
     case CHECK_USER_TOKEN:
+    case FAIL_LOGIN:
+    case FAIL_REGISTER:
       return {
         ...state,
         ...action.payload
