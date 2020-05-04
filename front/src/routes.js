@@ -8,7 +8,6 @@ import SplashScreen from './containers/Splash'
 import LoginScreen from './containers/Authentication/login'
 import RegisterScreen from './containers/Authentication/register'
 import MainScreen from './containers/Main'
-import ProfileSettings from './containers/Profile/Config'
 import ChooseFavoritesScreen from './containers/Choose-Favorites'
 import ChossePreferenceScreen from './containers/Choose-Favorites/preferences'
 import MovieDetail from './containers/Feed/movie-detail'
@@ -20,7 +19,7 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='ProfileSettings'
+        initialRouteName='Home'
         screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name='Splash'
@@ -35,8 +34,6 @@ const Routes = () => {
           name='Home'
           component={MainScreen} />
         <Stack.Screen
-          name='ProfileSettings'
-          component={ProfileSettings} />
           name='ChooseFavorites'
           component={ChooseFavoritesScreen} />
         <Stack.Screen

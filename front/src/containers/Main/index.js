@@ -11,6 +11,7 @@ import Octicons from 'react-native-vector-icons/Octicons'
 
 // project imports
 import ProfileScreen from '../Profile'
+import ProfileSettings from '../Profile/Config'
 import NotificationScreen from '../Notification'
 import FeedScreen from '../Feed'
 import NewsDetail from '../Feed/news-detail'
@@ -41,6 +42,24 @@ const FeedSubRoutes = () => {
   )
 }
 
+const ProfileSubRoutes = () => {
+  return (
+    <NavigationContainer
+      independent={true}>
+      <Stack.Navigator
+        initialRouteName='Main'
+        screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name='Main'
+          component={ProfileScreen} />
+        <Stack.Screen
+          name='Config'
+          component={ProfileSettings} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
 function MainScreen() {
   return (
     <Tab.Navigator
@@ -49,7 +68,7 @@ function MainScreen() {
       barStyle={{ backgroundColor: '#4623DE' }} >
       <Tab.Screen
         name='Profile'
-        component={ProfileScreen}
+        component={ProfileSubRoutes}
         options={{
           tabBarLabel: 'Perfil',
           tabBarIcon: ({ color }) => (

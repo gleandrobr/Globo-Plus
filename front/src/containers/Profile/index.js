@@ -73,7 +73,8 @@ const ProfileScreen = (props) => {
             <MaterialIcon size={20} name='local-movies' />
             <ListItemText style={{ marginLeft: 10 }}>Globo Play</ListItemText>
           </ListItem>
-          <ListItem>
+          <ListItem
+            onPress={() => props.navigation.navigate('Config')}>
             <Octions size={20} name='settings' />
             <ListItemText style={{ marginLeft: 10 }}>Configurações</ListItemText>
           </ListItem>
