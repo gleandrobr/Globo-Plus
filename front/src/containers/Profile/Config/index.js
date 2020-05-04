@@ -10,7 +10,7 @@ import {
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Octicons from 'react-native-vector-icons/Octicons'
-import Feather from 'react-native-vector-icons/Feather'
+import FeatherIcons from 'react-native-vector-icons/Feather'
 
 // local imports
 import {
@@ -37,7 +37,7 @@ const ProfileSettings = () => {
             <ListItemText style={{ marginLeft: 10 }}>Notificações</ListItemText>
           </ListItem>
           <ListItem>
-            <Feather size={28} name='lock' />
+            <FeatherIcons size={28} name='lock' />
             <ListItemText style={{ marginLeft: 10 }}>Privacidade e segurança</ListItemText>
           </ListItem>
           <ListItem>
@@ -45,7 +45,7 @@ const ProfileSettings = () => {
             <ListItemText style={{ marginLeft: 10 }}>Ajuda e suporte</ListItemText>
           </ListItem>
           <ListItem>
-            <Feather size={28} name='info' />
+            <FeatherIcons size={28} name='info' />
             <ListItemText style={{ marginLeft: 10 }}>Sobre</ListItemText>
           </ListItem>
         </View>
