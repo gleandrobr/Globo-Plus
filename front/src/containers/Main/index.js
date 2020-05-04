@@ -23,40 +23,34 @@ const Stack = createStackNavigator()
 
 const FeedSubRoutes = () => {
   return (
-    <NavigationContainer
-      independent={true}>
-      <Stack.Navigator
-        initialRouteName='Main'
-        screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name='Main'
-          component={FeedScreen} />
-        <Stack.Screen
-          name='NewsDetail'
-          component={NewsDetail} />
-        <Stack.Screen
-          name='MovieDetail'
-          component={MovieDetail} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      initialRouteName='Main'
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name='Main'
+        component={FeedScreen} />
+      <Stack.Screen
+        name='NewsDetail'
+        component={NewsDetail} />
+      <Stack.Screen
+        name='MovieDetail'
+        component={MovieDetail} />
+    </Stack.Navigator>
   )
 }
 
 const ProfileSubRoutes = () => {
   return (
-    <NavigationContainer
-      independent={true}>
-      <Stack.Navigator
-        initialRouteName='Main'
-        screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name='Main'
-          component={ProfileScreen} />
-        <Stack.Screen
-          name='Config'
-          component={ProfileSettings} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      initialRouteName='Main'
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name='Main'
+        component={ProfileScreen} />
+      <Stack.Screen
+        name='Config'
+        component={ProfileSettings} />
+    </Stack.Navigator>
   )
 }
 
