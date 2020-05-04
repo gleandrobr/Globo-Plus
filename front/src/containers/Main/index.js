@@ -1,7 +1,8 @@
 // react imports
 import React from 'react'
 
-import { Text } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 // third imports
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
@@ -10,23 +11,58 @@ import Octicons from 'react-native-vector-icons/Octicons'
 
 // project imports
 import ProfileScreen from '../Profile'
+import ProfileSettings from '../Profile/Config'
 import NotificationScreen from '../Notification'
 import FeedScreen from '../Feed'
+import NewsDetail from '../Feed/news-detail'
+import MovieDetail from '../Feed/movie-detail'
 
-const Profile = () => (
-  <Text>Profile</Text>
-)
+// routes config
 const Tab = createMaterialBottomTabNavigator()
+const Stack = createStackNavigator()
+
+const FeedSubRoutes = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName='Main'
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name='Main'
+        component={FeedScreen} />
+      <Stack.Screen
+        name='NewsDetail'
+        component={NewsDetail} />
+      <Stack.Screen
+        name='MovieDetail'
+        component={MovieDetail} />
+    </Stack.Navigator>
+  )
+}
+
+const ProfileSubRoutes = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName='Main'
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name='Main'
+        component={ProfileScreen} />
+      <Stack.Screen
+        name='Config'
+        component={ProfileSettings} />
+    </Stack.Navigator>
+  )
+}
 
 function MainScreen() {
   return (
     <Tab.Navigator
-      initialRouteName='Home'
+      initialRouteName='Feed'
       activeColor='#fff'
       barStyle={{ backgroundColor: '#4623DE' }} >
       <Tab.Screen
         name='Profile'
-        component={ProfileScreen}
+        component={ProfileSubRoutes}
         options={{
           tabBarLabel: 'Perfil',
           tabBarIcon: ({ color }) => (
@@ -34,8 +70,8 @@ function MainScreen() {
           ),
         }} />
       <Tab.Screen
-        name='Home'
-        component={FeedScreen}
+        name='Feed'
+        component={FeedSubRoutes}
         options={{
           tabBarLabel: 'Inicio',
           tabBarIcon: ({ color }) => (
